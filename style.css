@@ -1418,7 +1418,6 @@ body {
     font-size: 27px;
 }
 
-
 /* WhatsApp verde */
 
 .contato-icone.whatsapp {
@@ -1513,6 +1512,248 @@ body {
 
     .contato-card {
         min-height: auto;
+    }
+
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+.footer {
+    background: linear-gradient(
+        135deg,
+        #062457 0%,
+        #07377e 100%
+    );
+
+    color: #ffffff;
+}
+
+
+/* Área principal */
+
+.footer-container {
+    display: grid;
+
+    grid-template-columns: 1.15fr 1fr 0.75fr 0.9fr;
+
+    gap: 32px;
+
+    padding-top: 34px;
+    padding-bottom: 30px;
+}
+
+
+/* Marca */
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    text-decoration: none;
+}
+
+.footer-logo .logo-texto strong {
+    color: #ffffff;
+}
+
+.footer-logo .logo-texto strong span {
+    color: #4aa0ff;
+}
+
+.footer-logo .logo-texto small {
+    color: #d9e9ff;
+}
+
+.footer-marca p {
+    max-width: 240px;
+
+    margin-top: 12px;
+
+    color: #d5e5f8;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+/* Títulos */
+
+.footer h3 {
+    margin-bottom: 16px;
+
+    font-size: 14px;
+
+    color: #ffffff;
+}
+
+
+/* Links */
+
+.footer-links-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.footer-links-grid div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.footer-links a {
+    color: #d5e5f8;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: 0.2s;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+
+/* Redes sociais */
+
+.redes-lista {
+    display: flex;
+
+    gap: 12px;
+}
+
+.redes-lista a {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(255, 255, 255, 0.10);
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    transition: 0.2s;
+}
+
+.redes-lista a:hover {
+    background-color: #1677ff;
+
+    transform: translateY(-2px);
+}
+
+
+/* Contato */
+
+.footer-contato {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+.footer-whatsapp {
+    width: fit-content;
+
+    padding: 11px 17px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    background-color: #ffd400;
+
+    color: #071f55;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.footer-contato p {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #d5e5f8;
+
+    font-size: 13px;
+}
+
+
+/* Linha inferior */
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.footer-bottom-container {
+    min-height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: #c9dcf4;
+
+    font-size: 12px;
+}
+
+
+/* Responsividade */
+
+@media (max-width: 950px) {
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .footer-container {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .footer-bottom-container {
+        padding: 18px 0;
+
+        flex-direction: column;
+
+        align-items: flex-start;
     }
 
 }
