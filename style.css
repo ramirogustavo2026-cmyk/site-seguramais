@@ -726,8 +726,58 @@ body {
 ========================= */
 
 .seguros {
+    position: relative;
+    overflow: hidden;
+
     padding: 55px 0 65px;
-    background: #f4f9ff;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f7fbff 0%,
+            #eef7ff 100%
+        );
+}
+
+.seguros::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    left: -180px;
+    top: 120px;
+
+    border-radius: 50%;
+
+    background: rgba(8, 116, 249, 0.05);
+
+    pointer-events: none;
+}
+
+.seguros::after {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    right: -220px;
+    bottom: -240px;
+
+    border-radius: 50%;
+
+    background: rgba(8, 116, 249, 0.045);
+
+    pointer-events: none;
+}
+
+.seguros .container {
+    position: relative;
+    z-index: 1;
 }
 
 .seguros-cabecalho {
@@ -781,6 +831,8 @@ body {
     gap: 18px;
     transition: transform 0.4s ease;
 }
+
+
 
 
 /* Card */
@@ -914,12 +966,13 @@ body {
 }
 
 .carrossel-indicadores span {
-    width: 9px;
-    height: 9px;
+    cursor: pointer;
 
-    border-radius: 50%;
+    transition: 0.2s;
+}
 
-    background-color: #c6d8ef;
+.carrossel-indicadores span:hover {
+    transform: scale(1.25);
 }
 
 .carrossel-indicadores span.ativo {
@@ -930,9 +983,10 @@ body {
 /* Card dúvida */
 
 .card-duvida {
-    min-height: 100%;
+    min-height: 300px;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: 45% 55%;
 
     background: linear-gradient(
         135deg,
@@ -945,18 +999,20 @@ body {
     overflow: hidden;
 
     box-shadow: 0 7px 25px rgba(20, 80, 150, 0.10);
+
+    align-self: start;
 }
 
 .card-duvida img {
-    width: 45%;
+    width: 100%;
+    height: 100%;
+
     object-fit: cover;
-    object-position: center;
+    object-position: center top;
 }
 
 .card-duvida-conteudo {
-    width: 55%;
-
-    padding: 24px 18px;
+    padding: 22px 18px;
 
     display: flex;
     flex-direction: column;
@@ -964,31 +1020,27 @@ body {
 }
 
 .card-duvida h3 {
-    color: #071f55;
-
     font-size: 20px;
-
-    margin-bottom: 10px;
+    line-height: 1.1;
 }
 
 .card-duvida p {
-    color: #5276a4;
+    margin-top: 10px;
 
     font-size: 14px;
-
     line-height: 1.45;
 }
 
 .btn-especialista {
-    margin-top: 20px;
+    margin-top: 18px;
 
-    padding: 12px 14px;
+    padding: 12px 13px;
+
+    border-radius: 9px;
 
     background-color: #ffd400;
 
     color: #071f55;
-
-    border-radius: 9px;
 
     text-align: center;
 
@@ -1052,6 +1104,411 @@ body {
 
     .card-duvida img {
         height: 220px;
+    }
+
+}
+
+.secao-azul-clara {
+    background:
+        linear-gradient(
+            180deg,
+            #f8fbff 0%,
+            #eef7ff 100%
+        );
+}
+
+/* =========================
+   POR QUE ESCOLHER
+========================= */
+
+.porque-escolher {
+    position: relative;
+    overflow: hidden;
+
+    padding: 60px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f7fbff 100%
+        );
+}
+
+
+/* Detalhes azulados do fundo */
+
+.porque-escolher::before,
+.porque-escolher::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: rgba(22, 119, 255, 0.05);
+
+    pointer-events: none;
+}
+
+.porque-escolher::before {
+    width: 360px;
+    height: 360px;
+
+    left: -180px;
+    bottom: -170px;
+}
+
+.porque-escolher::after {
+    width: 420px;
+    height: 420px;
+
+    right: -210px;
+    top: -220px;
+}
+
+
+/* Mantém o conteúdo acima dos detalhes */
+
+.porque-escolher .container {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Cabeçalho */
+
+.porque-cabecalho {
+    max-width: 650px;
+
+    margin-bottom: 35px;
+}
+
+.porque-cabecalho h2 {
+    color: #071f55;
+
+    font-size: clamp(34px, 4vw, 46px);
+
+    line-height: 1.05;
+}
+
+.porque-cabecalho h2 strong {
+    color: #1677ff;
+}
+
+.porque-cabecalho p {
+    margin-top: 12px;
+
+    color: #5276a4;
+
+    font-size: 16px;
+
+    line-height: 1.55;
+}
+
+
+/* Grid */
+
+.porque-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+/* Cards */
+
+.porque-item {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 24px;
+
+    background-color: rgba(255, 255, 255, 0.92);
+
+    border-radius: 14px;
+
+    box-shadow: 0 6px 20px rgba(20, 80, 150, 0.07);
+}
+
+
+/* Ícones */
+
+.porque-icone {
+    min-width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #eaf4ff;
+
+    font-size: 28px;
+}
+
+
+/* Textos dos cards */
+
+.porque-item h3 {
+    color: #071f55;
+
+    font-size: 17px;
+
+    margin-bottom: 6px;
+}
+
+.porque-item p {
+    color: #5276a4;
+
+    font-size: 14px;
+
+    line-height: 1.45;
+}
+
+
+/* Responsividade */
+
+@media (max-width: 700px) {
+
+    .porque-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================
+   CONTATO
+========================= */
+
+.contato {
+    position: relative;
+    overflow: hidden;
+
+    padding: 60px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f7fbff 0%,
+            #edf6ff 100%
+        );
+}
+
+
+/* Detalhes azuis de fundo */
+
+.contato::before,
+.contato::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: rgba(22, 119, 255, 0.05);
+
+    pointer-events: none;
+}
+
+.contato::before {
+    width: 420px;
+    height: 420px;
+
+    left: -230px;
+    bottom: -220px;
+}
+
+.contato::after {
+    width: 380px;
+    height: 380px;
+
+    right: -190px;
+    top: -210px;
+}
+
+.contato .container {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Cabeçalho */
+
+.contato-cabecalho {
+    margin-bottom: 32px;
+}
+
+.contato-cabecalho h2 {
+    max-width: 750px;
+
+    color: #071f55;
+
+    font-size: clamp(34px, 4vw, 46px);
+
+    line-height: 1.05;
+}
+
+.contato-cabecalho h2 strong {
+    color: #1677ff;
+}
+
+.contato-cabecalho p {
+    margin-top: 10px;
+
+    color: #5276a4;
+
+    font-size: 16px;
+}
+
+
+/* Grid */
+
+.contato-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+
+/* Cards */
+
+.contato-card {
+    min-height: 145px;
+
+    padding: 22px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    background-color: rgba(255, 255, 255, 0.95);
+
+    border-radius: 14px;
+
+    box-shadow: 0 6px 20px rgba(20, 80, 150, 0.08);
+}
+
+
+/* Ícones */
+
+.contato-icone {
+    min-width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #1677ff;
+
+    color: #ffffff;
+
+    font-size: 27px;
+}
+
+
+/* WhatsApp verde */
+
+.contato-icone.whatsapp {
+    background-color: #20c65a;
+}
+
+
+/* Informações */
+
+.contato-info h3 {
+    margin-bottom: 5px;
+
+    color: #071f55;
+
+    font-size: 16px;
+}
+
+.contato-info strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #1677ff;
+
+    font-size: 15px;
+}
+
+.contato-info p {
+    color: #5276a4;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+}
+
+
+/* Botão WhatsApp */
+
+.btn-contato-whatsapp {
+    width: fit-content;
+
+    margin-top: 10px;
+
+    padding: 9px 16px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    background-color: #ffd400;
+
+    color: #071f55;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+.btn-contato-whatsapp:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.10);
+}
+
+
+/* Responsividade */
+
+@media (max-width: 1000px) {
+
+    .contato-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .contato-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contato-card {
+        min-height: auto;
     }
 
 }
