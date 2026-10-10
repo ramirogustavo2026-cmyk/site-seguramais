@@ -1422,9 +1422,13 @@ body {
 /* WhatsApp verde */
 
 .contato-icone.whatsapp {
-    background-color: #20c65a;
+    background-color: #25d366;
+    color: #ffffff;
 }
 
+.contato-icone.whatsapp i {
+    font-size: 28px;
+}
 
 /* Informações */
 
