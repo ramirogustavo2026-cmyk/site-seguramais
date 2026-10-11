@@ -94,3 +94,18 @@ window.addEventListener("resize", atualizarCarrossel);
 
 
 atualizarCarrossel();
+
+const botaoMenuMobile = document.querySelector(".menu-mobile-btn");
+const menuMobile = document.querySelector(".menu-mobile");
+
+botaoMenuMobile.addEventListener("click", () => {
+    menuMobile.classList.toggle("ativo");
+});
+
+const linksMenuMobile = document.querySelectorAll(".menu-mobile a");
+
+linksMenuMobile.forEach((link) => {
+    link.addEventListener("click", () => {
+        menuMobile.classList.remove("ativo");
+    });
+});
