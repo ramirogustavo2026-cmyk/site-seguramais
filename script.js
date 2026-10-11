@@ -1,3 +1,7 @@
+/* =========================
+   CARROSSEL DE SEGUROS
+========================= */
+
 const trilho = document.querySelector(".seguros-trilho");
 const cards = document.querySelectorAll(".seguro-card");
 const btnEsquerda = document.querySelector(".carrossel-seta.esquerda");
@@ -6,7 +10,9 @@ const indicadores = document.querySelectorAll(".carrossel-indicadores span");
 
 let indiceAtual = 0;
 
+
 function quantidadeVisivel() {
+
     if (window.innerWidth <= 560) {
         return 1;
     }
@@ -18,13 +24,20 @@ function quantidadeVisivel() {
     return 3;
 }
 
+
 function atualizarCarrossel() {
+
+    if (!trilho || cards.length === 0) {
+        return;
+    }
+
     const visiveis = quantidadeVisivel();
 
     const larguraCard = cards[0].offsetWidth;
     const gap = 18;
 
     const maxIndice = cards.length - visiveis;
+
 
     if (indiceAtual > maxIndice) {
         indiceAtual = maxIndice;
@@ -34,78 +47,156 @@ function atualizarCarrossel() {
         indiceAtual = 0;
     }
 
-    const deslocamento = indiceAtual * (larguraCard + gap);
 
-    trilho.style.transform = `translateX(-${deslocamento}px)`;
+    const deslocamento =
+        indiceAtual * (larguraCard + gap);
+
+
+    trilho.style.transform =
+        `translateX(-${deslocamento}px)`;
+
 
     indicadores.forEach((indicador) => {
         indicador.classList.remove("ativo");
     });
 
+
     if (indicadores[indiceAtual]) {
         indicadores[indiceAtual].classList.add("ativo");
     }
+
 }
 
 
-btnDireita.addEventListener("click", () => {
-    const visiveis = quantidadeVisivel();
-    const maxIndice = cards.length - visiveis;
+/* SÓ EXECUTA SE O CARROSSEL EXISTIR */
 
-    if (indiceAtual < maxIndice) {
-        indiceAtual++;
-    } else {
-        indiceAtual = 0;
-    }
+if (
+    trilho &&
+    cards.length > 0 &&
+    btnDireita &&
+    btnEsquerda
+) {
 
-    atualizarCarrossel();
-});
+    btnDireita.addEventListener("click", () => {
 
-
-btnEsquerda.addEventListener("click", () => {
-    const visiveis = quantidadeVisivel();
-    const maxIndice = cards.length - visiveis;
-
-    if (indiceAtual > 0) {
-        indiceAtual--;
-    } else {
-        indiceAtual = maxIndice;
-    }
-
-    atualizarCarrossel();
-});
-
-
-indicadores.forEach((indicador, indice) => {
-    indicador.addEventListener("click", () => {
         const visiveis = quantidadeVisivel();
-        const maxIndice = cards.length - visiveis;
 
-        if (indice <= maxIndice) {
-            indiceAtual = indice;
+        const maxIndice =
+            cards.length - visiveis;
 
-            atualizarCarrossel();
+
+        if (indiceAtual < maxIndice) {
+
+            indiceAtual++;
+
+        } else {
+
+            indiceAtual = 0;
+
         }
+
+
+        atualizarCarrossel();
+
     });
-});
 
 
-window.addEventListener("resize", atualizarCarrossel);
+    btnEsquerda.addEventListener("click", () => {
+
+        const visiveis = quantidadeVisivel();
+
+        const maxIndice =
+            cards.length - visiveis;
 
 
-atualizarCarrossel();
+        if (indiceAtual > 0) {
 
-const botaoMenuMobile = document.querySelector(".menu-mobile-btn");
-const menuMobile = document.querySelector(".menu-mobile");
+            indiceAtual--;
 
-botaoMenuMobile.addEventListener("click", () => {
-    menuMobile.classList.toggle("ativo");
-});
+        } else {
 
-const linksMenuMobile = document.querySelectorAll(".menu-mobile a");
+            indiceAtual = maxIndice;
 
-linksMenuMobile.forEach((link) => {
-    link.addEventListener("click", () => {
-        menuMobile.classList.remove("ativo");
+        }
+
+
+        atualizarCarrossel();
+
     });
-});
+
+
+    indicadores.forEach((indicador, indice) => {
+
+        indicador.addEventListener("click", () => {
+
+            const visiveis = quantidadeVisivel();
+
+            const maxIndice =
+                cards.length - visiveis;
+
+
+            if (indice <= maxIndice) {
+
+                indiceAtual = indice;
+
+                atualizarCarrossel();
+
+            }
+
+        });
+
+    });
+
+
+    window.addEventListener(
+        "resize",
+        atualizarCarrossel
+    );
+
+
+    atualizarCarrossel();
+
+}
+
+
+/* =========================
+   MENU MOBILE
+========================= */
+
+const botaoMenuMobile =
+    document.querySelector(".menu-mobile-btn");
+
+const menuMobile =
+    document.querySelector(".menu-mobile");
+
+
+if (botaoMenuMobile && menuMobile) {
+
+    botaoMenuMobile.addEventListener(
+        "click",
+        () => {
+
+            menuMobile.classList.toggle("ativo");
+
+        }
+    );
+
+
+    const linksMenuMobile =
+        document.querySelectorAll(".menu-mobile a");
+
+
+    linksMenuMobile.forEach((link) => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                menuMobile.classList.remove("ativo");
+
+            }
+        );
+
+    });
+
+}

@@ -1969,7 +1969,7 @@ body {
 
 
 /* =========================================================
-   BANNER INTERNO
+   BANNER - NOSSA HISTÓRIA
 ========================================================= */
 
 .historia-hero {
@@ -1982,98 +1982,106 @@ body {
 
     overflow: hidden;
 
-    background-color: #08265c;
+    background-color: #082d68;
 }
 
 
-/* Imagem de fundo */
+/* FOTO */
 
-.historia-hero-imagem {
+.historia-hero::before {
+    content: "";
+
     position: absolute;
     inset: 0;
 
-    background-image: url("imagens/historia/destaque-seguro-residencial.png");
+    background-image: url("imagens/historia/recepcao-historia.png");
+
+    background-repeat: no-repeat;
     background-size: cover;
-    background-position: center 28.5%;
+
+    /* mantém a marca da recepção aparecendo */
+    background-position: center 48%;
 
     z-index: 0;
 }
 
 
-/* Escurecimento da imagem */
+/* CAMADA AZUL */
 
-.historia-hero-overlay {
+.historia-hero::after {
+    content: "";
+
     position: absolute;
     inset: 0;
 
     background:
         linear-gradient(
             90deg,
-            rgba(4, 35, 82, 0.95) 0%,
-            rgba(5, 49, 100, 0.82) 38%,
-            rgba(5, 49, 100, 0.35) 68%,
-            rgba(5, 49, 100, 0.12) 100%
+            rgba(4, 39, 88, 0.97) 0%,
+            rgba(4, 45, 96, 0.90) 38%,
+            rgba(4, 47, 101, 0.60) 62%,
+            rgba(4, 47, 101, 0.18) 100%
         );
 
     z-index: 1;
+
+    pointer-events: none;
 }
 
 
-/* Conteúdo */
+/* CONTEÚDO */
 
 .historia-hero-container {
     position: relative;
 
     z-index: 2;
+
+    width: min(1180px, 90%);
+
+    margin: 0 auto;
 }
 
+
 .historia-hero-conteudo {
-    max-width: 600px;
+    max-width: 560px;
 
     color: #ffffff;
 }
 
 
-/* Etiqueta */
-
-.historia-etiqueta {
-    margin-bottom: 16px;
-
-    color: #68c5ff;
-
-    font-size: 13px;
-    font-weight: 700;
-
-    letter-spacing: 1.5px;
+.historia-hero-conteudo .titulo-pequeno {
+    color: #55b7ff;
 }
 
 
-/* Título */
-
 .historia-hero h1 {
+    margin-top: 15px;
+
+    color: #ffffff;
+
     font-size: clamp(48px, 6vw, 72px);
 
-    line-height: 0.98;
+    line-height: 1;
 
     letter-spacing: -2px;
 }
 
+
 .historia-hero h1 strong {
-    color: #1f8cff;
+    color: #1688ff;
 }
 
-
-/* Texto */
 
 .historia-hero p {
     max-width: 480px;
 
-    margin-top: 18px;
+    margin-top: 22px;
 
     color: #ffffff;
 
-    font-size: 20px;
-    line-height: 1.45;
+    font-size: 19px;
+
+    line-height: 1.5;
 }
 
 
