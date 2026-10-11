@@ -1992,7 +1992,7 @@ body {
     position: absolute;
     inset: 0;
 
-    background-image: url("imagens/historia/recepcao-historia.png");
+    background-image: url("imagens/historia/destaque-seguro-residencial.png");
     background-size: cover;
     background-position: center 28.5%;
 
@@ -2995,6 +2995,956 @@ body {
         width: 100%;
 
         justify-content: center;
+    }
+
+}
+
+/* =========================================================
+   PÁGINA BLOG
+========================================================= */
+
+
+/* =========================================================
+   BANNER DO BLOG
+========================================================= */
+
+.blog-hero {
+    position: relative;
+
+    min-height: 330px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background-color: #08265c;
+}
+
+
+/* Imagem de fundo */
+
+.blog-hero-imagem {
+    position: absolute;
+    inset: 0;
+
+    background-image: url("imagens/blog/banner-blog.png");
+    background-size: cover;
+    background-position: center;
+
+    z-index: 0;
+}
+
+
+/* Overlay */
+
+.blog-hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 38, 86, 0.96) 0%,
+            rgba(5, 50, 105, 0.88) 35%,
+            rgba(5, 50, 105, 0.50) 60%,
+            rgba(5, 50, 105, 0.12) 100%
+        );
+
+    z-index: 1;
+}
+
+
+/* Conteúdo */
+
+.blog-hero-container {
+    position: relative;
+
+    z-index: 2;
+}
+
+.blog-hero-conteudo {
+    max-width: 600px;
+
+    color: #ffffff;
+}
+
+
+/* Etiqueta */
+
+.blog-etiqueta {
+    margin-bottom: 15px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: #cfe8ff;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.blog-etiqueta span {
+    width: 38px;
+    height: 3px;
+
+    display: block;
+
+    background-color: #1f8cff;
+}
+
+
+/* Título */
+
+.blog-hero h1 {
+    color: #ffffff;
+
+    font-size: clamp(46px, 6vw, 66px);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+}
+
+.blog-hero h1 strong {
+    color: #1f8cff;
+}
+
+
+/* Texto */
+
+.blog-hero p {
+    max-width: 470px;
+
+    margin-top: 18px;
+
+    color: #ffffff;
+
+    font-size: 19px;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   ARTIGO PRINCIPAL
+========================================================= */
+
+.blog-destaque {
+    padding: 65px 0 35px;
+
+    background-color: #ffffff;
+}
+
+.blog-destaque-card {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f3f8ff 100%
+        );
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 30px rgba(20, 80, 150, 0.10);
+}
+
+
+/* Foto */
+
+.blog-destaque-imagem {
+    overflow: hidden;
+}
+
+.blog-destaque-imagem img {
+    width: 100%;
+    height: 100%;
+
+    min-height: 345px;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* Conteúdo */
+
+.blog-destaque-conteudo {
+    padding: 38px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.blog-categoria {
+    width: fit-content;
+
+    padding: 6px 12px;
+
+    border: 1px solid #d9eaff;
+
+    border-radius: 20px;
+
+    background-color: #f5faff;
+
+    color: #0874f9;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.blog-destaque-conteudo h2 {
+    max-width: 530px;
+
+    margin-top: 16px;
+
+    color: #071f55;
+
+    font-size: clamp(32px, 4vw, 44px);
+
+    line-height: 1.08;
+
+    letter-spacing: -1px;
+}
+
+.blog-destaque-conteudo p {
+    max-width: 550px;
+
+    margin-top: 15px;
+
+    color: #5276a4;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+
+/* Rodapé do destaque */
+
+.blog-destaque-rodape {
+    margin-top: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+
+/* Botão */
+
+.blog-btn-artigo {
+    padding: 12px 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    background-color: #0874f9;
+
+    color: #ffffff;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+.blog-btn-artigo:hover {
+    background-color: #005fd7;
+
+    transform: translateY(-2px);
+}
+
+
+/* Meta */
+
+.blog-meta {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    flex-wrap: wrap;
+
+    color: #5276a4;
+
+    font-size: 12px;
+}
+
+.blog-meta span {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.blog-meta i {
+    color: #6f91bb;
+}
+
+
+/* =========================================================
+   ARTIGOS EM DESTAQUE
+========================================================= */
+
+.blog-artigos {
+    padding: 40px 0 65px;
+
+    background-color: #ffffff;
+}
+
+
+/* Cabeçalho */
+
+.blog-artigos-cabecalho {
+    max-width: 700px;
+
+    margin-bottom: 35px;
+}
+
+.blog-artigos-cabecalho h2 {
+    color: #071f55;
+
+    font-size: clamp(36px, 4vw, 48px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1px;
+}
+
+.blog-artigos-cabecalho h2 strong {
+    color: #1677ff;
+}
+
+
+/* Grid */
+
+.blog-artigos-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 24px;
+}
+
+
+/* Card */
+
+.blog-artigo-card {
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #ffffff;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 7px 24px rgba(20, 80, 150, 0.09);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.blog-artigo-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 12px 30px rgba(20, 80, 150, 0.14);
+}
+
+
+/* Imagem */
+
+.blog-artigo-imagem {
+    position: relative;
+
+    overflow: hidden;
+}
+
+.blog-artigo-imagem img {
+    width: 100%;
+    height: 210px;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.35s ease;
+}
+
+.blog-artigo-card:hover .blog-artigo-imagem img {
+    transform: scale(1.03);
+}
+
+
+/* Categoria dentro da foto */
+
+.blog-artigo-imagem .blog-categoria {
+    position: absolute;
+
+    top: 14px;
+    left: 14px;
+
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+
+/* Conteúdo */
+
+.blog-artigo-conteudo {
+    flex: 1;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-artigo-conteudo h3 {
+    color: #071f55;
+
+    font-size: 20px;
+
+    line-height: 1.2;
+}
+
+.blog-artigo-conteudo p {
+    margin-top: 10px;
+
+    color: #5276a4;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+}
+
+
+/* Rodapé do card */
+
+.blog-artigo-rodape {
+    margin-top: auto;
+
+    padding-top: 22px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 12px;
+}
+
+.blog-artigo-rodape .blog-meta {
+    gap: 12px;
+
+    font-size: 11px;
+}
+
+.blog-artigo-rodape > a {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    color: #0874f9;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+.blog-newsletter {
+    padding: 0 0 70px;
+
+    background-color: #ffffff;
+}
+
+.blog-newsletter-box {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 28px 32px;
+
+    display: grid;
+
+    grid-template-columns: auto 1fr 1.25fr;
+
+    align-items: center;
+
+    gap: 24px;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f5faff 0%,
+            #eaf4ff 100%
+        );
+
+    box-shadow:
+        0 7px 24px rgba(20, 80, 150, 0.06);
+}
+
+
+/* detalhe de fundo */
+
+.blog-newsletter-box::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -160px;
+    bottom: -190px;
+
+    border-radius: 50%;
+
+    background: rgba(22, 119, 255, 0.06);
+
+    pointer-events: none;
+}
+
+
+/* Ícone */
+
+.blog-newsletter-icone {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #dceeff;
+
+    color: #0874f9;
+
+    font-size: 27px;
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* Conteúdo */
+
+.blog-newsletter-conteudo {
+    position: relative;
+
+    z-index: 1;
+}
+
+.blog-newsletter-conteudo h2 {
+    color: #071f55;
+
+    font-size: 27px;
+
+    line-height: 1.1;
+}
+
+.blog-newsletter-conteudo h2 strong {
+    color: #1677ff;
+}
+
+.blog-newsletter-conteudo p {
+    margin-top: 7px;
+
+    max-width: 450px;
+
+    color: #5276a4;
+
+    font-size: 13px;
+
+    line-height: 1.45;
+}
+
+
+/* Formulário */
+
+.blog-newsletter-form {
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+
+    width: 100%;
+}
+
+.blog-newsletter-form input {
+    min-width: 0;
+
+    flex: 1;
+
+    height: 50px;
+
+    padding: 0 16px;
+
+    border: 1px solid #d5e5f5;
+    border-right: none;
+
+    border-radius: 9px 0 0 9px;
+
+    outline: none;
+
+    background-color: #ffffff;
+
+    color: #071f55;
+
+    font-size: 14px;
+}
+
+.blog-newsletter-form input::placeholder {
+    color: #7894b5;
+}
+
+.blog-newsletter-form input:focus {
+    border-color: #1677ff;
+}
+
+
+/* Botão */
+
+.blog-newsletter-form button {
+    height: 50px;
+
+    padding: 0 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    border: none;
+
+    border-radius: 0 9px 9px 0;
+
+    background-color: #0874f9;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.blog-newsletter-form button:hover {
+    background-color: #005fd7;
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE
+========================================================= */
+
+.sr-only {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE - BLOG
+========================================================= */
+
+
+/* =========================
+   TABLET / TELAS MÉDIAS
+========================= */
+
+@media (max-width: 950px) {
+
+    /* DESTAQUE */
+
+    .blog-destaque-card {
+        grid-template-columns: 1fr;
+    }
+
+    .blog-destaque-imagem img {
+        min-height: 0;
+        height: 340px;
+    }
+
+
+    /* ARTIGOS */
+
+    .blog-artigos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /* NEWSLETTER */
+
+    .blog-newsletter-box {
+        grid-template-columns: auto 1fr;
+
+        gap: 20px;
+    }
+
+    .blog-newsletter-form {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* =========================
+   TABLET MENOR
+========================= */
+
+@media (max-width: 750px) {
+
+    /* HERO */
+
+    .blog-hero {
+        min-height: 300px;
+    }
+
+    .blog-hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(5, 38, 86, 0.92) 0%,
+                rgba(5, 50, 105, 0.75) 60%,
+                rgba(5, 50, 105, 0.28) 100%
+            );
+    }
+
+    .blog-hero h1 {
+        font-size: 52px;
+    }
+
+
+    /* ARTIGOS */
+
+    .blog-artigos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .blog-artigo-imagem img {
+        height: 260px;
+    }
+
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 560px) {
+
+    /* HERO */
+
+    .blog-hero {
+        min-height: 280px;
+    }
+
+    .blog-hero-imagem {
+        background-position: 65% center;
+    }
+
+    .blog-hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(5, 38, 86, 0.92) 0%,
+                rgba(5, 50, 105, 0.74) 55%,
+                rgba(5, 50, 105, 0.28) 100%
+            );
+    }
+
+    .blog-hero h1 {
+        max-width: 300px;
+
+        font-size: 42px;
+
+        letter-spacing: -1px;
+    }
+
+    .blog-hero p {
+        max-width: 290px;
+
+        font-size: 16px;
+    }
+
+
+    /* DESTAQUE */
+
+    .blog-destaque {
+        padding: 45px 0 25px;
+    }
+
+    .blog-destaque-card {
+        border-radius: 14px;
+    }
+
+    .blog-destaque-imagem img {
+        height: 230px;
+    }
+
+    .blog-destaque-conteudo {
+        padding: 22px;
+    }
+
+    .blog-destaque-conteudo h2 {
+        font-size: 30px;
+    }
+
+    .blog-destaque-conteudo p {
+        font-size: 14px;
+    }
+
+    .blog-destaque-rodape {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    /* ARTIGOS */
+
+    .blog-artigos {
+        padding: 35px 0 50px;
+    }
+
+    .blog-artigos-cabecalho {
+        margin-bottom: 25px;
+    }
+
+    .blog-artigos-cabecalho h2 {
+        font-size: 32px;
+    }
+
+    .blog-artigos-grid {
+        gap: 20px;
+    }
+
+    .blog-artigo-imagem img {
+        height: 210px;
+    }
+
+    .blog-artigo-conteudo {
+        padding: 18px;
+    }
+
+    .blog-artigo-conteudo h3 {
+        font-size: 19px;
+    }
+
+    .blog-artigo-rodape {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    /* NEWSLETTER */
+
+    .blog-newsletter {
+        padding-bottom: 50px;
+    }
+
+    .blog-newsletter-box {
+        padding: 24px 20px;
+
+        grid-template-columns: 1fr;
+
+        text-align: left;
+    }
+
+    .blog-newsletter-icone {
+        width: 52px;
+        height: 52px;
+
+        font-size: 23px;
+    }
+
+    .blog-newsletter-conteudo h2 {
+        font-size: 24px;
+    }
+
+    .blog-newsletter-form {
+        grid-column: auto;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .blog-newsletter-form input {
+        width: 100%;
+
+        height: 48px;
+
+        border: 1px solid #d5e5f5;
+
+        border-radius: 9px;
+    }
+
+    .blog-newsletter-form button {
+        width: 100%;
+
+        height: 48px;
+
+        border-radius: 9px;
     }
 
 }
