@@ -1962,3 +1962,1039 @@ body {
         font-weight: 600;
     }
 }
+
+/* =========================================================
+   PÁGINA NOSSA HISTÓRIA
+========================================================= */
+
+
+/* =========================================================
+   BANNER INTERNO
+========================================================= */
+
+.historia-hero {
+    position: relative;
+
+    min-height: 360px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background-color: #08265c;
+}
+
+
+/* Imagem de fundo */
+
+.historia-hero-imagem {
+    position: absolute;
+    inset: 0;
+
+    background-image: url("imagens/historia/recepcao-historia.png");
+    background-size: cover;
+    background-position: center 28.5%;
+
+    z-index: 0;
+}
+
+
+/* Escurecimento da imagem */
+
+.historia-hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4, 35, 82, 0.95) 0%,
+            rgba(5, 49, 100, 0.82) 38%,
+            rgba(5, 49, 100, 0.35) 68%,
+            rgba(5, 49, 100, 0.12) 100%
+        );
+
+    z-index: 1;
+}
+
+
+/* Conteúdo */
+
+.historia-hero-container {
+    position: relative;
+
+    z-index: 2;
+}
+
+.historia-hero-conteudo {
+    max-width: 600px;
+
+    color: #ffffff;
+}
+
+
+/* Etiqueta */
+
+.historia-etiqueta {
+    margin-bottom: 16px;
+
+    color: #68c5ff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* Título */
+
+.historia-hero h1 {
+    font-size: clamp(48px, 6vw, 72px);
+
+    line-height: 0.98;
+
+    letter-spacing: -2px;
+}
+
+.historia-hero h1 strong {
+    color: #1f8cff;
+}
+
+
+/* Texto */
+
+.historia-hero p {
+    max-width: 480px;
+
+    margin-top: 18px;
+
+    color: #ffffff;
+
+    font-size: 20px;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   QUEM SOMOS
+========================================================= */
+
+.historia-sobre {
+    padding: 70px 0;
+
+    background-color: #ffffff;
+}
+
+.historia-sobre-container {
+    display: grid;
+
+    grid-template-columns: 1fr 1.05fr;
+
+    gap: 65px;
+
+    align-items: center;
+}
+
+
+/* Conteúdo */
+
+.historia-sobre-conteudo h2 {
+    max-width: 520px;
+
+    color: #071f55;
+
+    font-size: clamp(36px, 4vw, 50px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1.3px;
+}
+
+.historia-sobre-conteudo h2 strong {
+    color: #1677ff;
+}
+
+.historia-sobre-conteudo p {
+    max-width: 570px;
+
+    margin-top: 18px;
+
+    color: #5276a4;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* Imagem */
+
+.historia-sobre-imagem {
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 10px 30px rgba(10, 70, 140, 0.12);
+}
+
+.historia-sobre-imagem img {
+    width: 100%;
+    height: 390px;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.4s ease;
+}
+
+.historia-sobre-imagem:hover img {
+    transform: scale(1.025);
+}
+
+
+/* =========================================================
+   MISSÃO, VISÃO E VALORES
+========================================================= */
+
+.historia-pilares {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 70px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f7fbff 0%,
+            #edf6ff 100%
+        );
+}
+
+
+/* Detalhes suaves de fundo */
+
+.historia-pilares::before,
+.historia-pilares::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: rgba(22, 119, 255, 0.05);
+
+    pointer-events: none;
+}
+
+.historia-pilares::before {
+    width: 420px;
+    height: 420px;
+
+    left: -220px;
+    top: -180px;
+}
+
+.historia-pilares::after {
+    width: 500px;
+    height: 500px;
+
+    right: -270px;
+    bottom: -250px;
+}
+
+.historia-pilares .container {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* Cabeçalho */
+
+.historia-pilares-cabecalho {
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+.historia-pilares-cabecalho .titulo-pequeno {
+    justify-content: center;
+}
+
+.historia-pilares-cabecalho h2 {
+    color: #071f55;
+
+    font-size: clamp(36px, 4vw, 48px);
+
+    line-height: 1.05;
+}
+
+
+/* Grid */
+
+.historia-pilares-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 24px;
+}
+
+
+/* Cards */
+
+.historia-pilar-card {
+    min-height: 300px;
+
+    padding: 30px;
+
+    background-color: rgba(255, 255, 255, 0.96);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 7px 24px rgba(20, 80, 150, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.historia-pilar-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 12px 30px rgba(20, 80, 150, 0.13);
+}
+
+
+/* Ícone */
+
+.historia-pilar-icone {
+    width: 58px;
+    height: 58px;
+
+    margin-bottom: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #eaf4ff;
+
+    color: #1677ff;
+
+    font-size: 26px;
+}
+
+
+/* Texto */
+
+.historia-pilar-card h3 {
+    margin-bottom: 12px;
+
+    color: #071f55;
+
+    font-size: 20px;
+}
+
+.historia-pilar-card p {
+    color: #5276a4;
+
+    font-size: 15px;
+
+    line-height: 1.65;
+}
+
+
+/* Lista de valores */
+
+.historia-pilar-card ul {
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.historia-pilar-card li {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 9px;
+
+    color: #5276a4;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+}
+
+.historia-pilar-card li i {
+    margin-top: 2px;
+
+    color: #1677ff;
+}
+
+
+/* =========================================================
+   CONFIANÇA EM NÚMEROS - VERSÃO INTEGRADA
+========================================================= */
+
+.historia-numeros {
+    position: relative;
+
+    min-height: 430px;
+
+    overflow: hidden;
+
+    background-color: #ffffff;
+}
+
+
+/* FOTO DA FAMÍLIA */
+
+.historia-numeros::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 62%;
+    height: 100%;
+
+    background-image:
+        url("imagens/historia/familia-historia.png");
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    background-position: center 42%;
+
+    z-index: 0;
+}
+
+
+/* DEGRADÊ PARA INTEGRAR FOTO + CONTEÚDO */
+
+.historia-numeros::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.04) 30%,
+            rgba(255, 255, 255, 0.32) 42%,
+            rgba(255, 255, 255, 0.78) 53%,
+            rgba(255, 255, 255, 0.97) 62%,
+            #ffffff 72%,
+            #ffffff 100%
+        );
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* CONTAINER */
+
+.historia-numeros-container {
+    width: min(1180px, 90%);
+    min-height: 430px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* ESCONDE A FOTO DO HTML NO DESKTOP */
+
+.historia-numeros-imagem {
+    display: none;
+}
+
+
+/* CONTEÚDO */
+
+.historia-numeros-conteudo {
+    width: 52%;
+
+    padding: 55px 0 55px 30px;
+}
+
+.historia-numeros-conteudo h2 {
+    max-width: 560px;
+
+    color: #071f55;
+
+    font-size: clamp(36px, 3.5vw, 50px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1px;
+}
+
+.historia-numeros-conteudo h2 strong {
+    color: #1677ff;
+}
+
+
+/* NÚMEROS */
+
+.numeros-grid {
+    margin-top: 35px;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 0;
+}
+
+.numero-item {
+    padding: 18px 12px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    border-right: 1px solid #dce8f5;
+}
+
+.numero-item:last-child {
+    border-right: none;
+}
+
+.numero-item i {
+    margin-bottom: 10px;
+
+    color: #1677ff;
+
+    font-size: 30px;
+}
+
+.numero-item strong {
+    color: #071f55;
+
+    font-size: 25px;
+
+    line-height: 1;
+}
+
+.numero-item span {
+    margin-top: 7px;
+
+    color: #5276a4;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   CTA FINAL
+========================================================= */
+
+.historia-cta {
+    padding: 20px 0 70px;
+
+    background-color: #ffffff;
+}
+
+.historia-cta-box {
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 190px;
+
+    padding: 38px 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #05275b 0%,
+            #064293 100%
+        );
+
+    box-shadow:
+        0 10px 30px rgba(5, 50, 110, 0.18);
+}
+
+
+/* detalhe de fundo */
+
+.historia-cta-box::after {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    right: -80px;
+    bottom: -140px;
+
+    border-radius: 50%;
+
+    background: rgba(22, 119, 255, 0.13);
+
+    pointer-events: none;
+}
+
+
+/* Conteúdo */
+
+.historia-cta-conteudo {
+    position: relative;
+
+    z-index: 1;
+}
+
+.historia-cta-etiqueta {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 14px;
+
+    color: #c8ddf8;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+}
+
+.historia-cta-etiqueta span {
+    width: 38px;
+    height: 2px;
+
+    display: block;
+
+    background-color: #ffffff;
+}
+
+
+/* Título */
+
+.historia-cta h2 {
+    color: #ffffff;
+
+    font-size: clamp(30px, 4vw, 42px);
+
+    line-height: 1.05;
+}
+
+.historia-cta h2 strong {
+    color: #35a4ff;
+}
+
+
+/* Texto */
+
+.historia-cta p {
+    max-width: 620px;
+
+    margin-top: 12px;
+
+    color: #d5e5f8;
+
+    font-size: 15px;
+
+    line-height: 1.55;
+}
+
+
+/* Botão */
+
+.historia-cta-botao {
+    position: relative;
+
+    z-index: 1;
+
+    flex-shrink: 0;
+
+    padding: 14px 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    background-color: #ffd400;
+
+    color: #071f55;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+.historia-cta-botao:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE - NOSSA HISTÓRIA
+========================================================= */
+
+
+/* =========================
+   TABLET / TELAS MÉDIAS
+========================= */
+
+@media (max-width: 950px) {
+
+    /* QUEM SOMOS */
+
+    .historia-sobre-container {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .historia-sobre-imagem img {
+        height: 350px;
+    }
+
+
+    /* PILARES */
+
+    .historia-pilares-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /* CONFIANÇA EM NÚMEROS */
+
+    .historia-numeros {
+        min-height: auto;
+
+        padding: 50px 0;
+    }
+
+    .historia-numeros::before,
+    .historia-numeros::after {
+        display: none;
+    }
+
+    .historia-numeros-container {
+        width: min(1180px, 90%);
+        min-height: auto;
+
+        margin: 0 auto;
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .historia-numeros-imagem {
+        display: block;
+
+        overflow: hidden;
+
+        border-radius: 16px;
+
+        box-shadow: 0 8px 25px rgba(20, 80, 150, 0.08);
+    }
+
+    .historia-numeros-imagem img {
+        width: 100%;
+        height: 320px;
+
+        display: block;
+
+        object-fit: cover;
+
+        object-position: center;
+    }
+
+    .historia-numeros-conteudo {
+        width: 100%;
+
+        padding: 0;
+    }
+
+
+    /* CTA */
+
+    .historia-cta-box {
+        gap: 30px;
+    }
+
+}
+
+
+/* =========================
+   TABLET MENOR
+========================= */
+
+@media (max-width: 750px) {
+
+    /* BANNER */
+
+    .historia-hero {
+        min-height: 330px;
+    }
+
+    .historia-hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(4, 35, 82, 0.90) 0%,
+                rgba(5, 49, 100, 0.72) 60%,
+                rgba(5, 49, 100, 0.30) 100%
+            );
+    }
+
+    .historia-hero h1 {
+        font-size: 52px;
+    }
+
+
+    /* PILARES */
+
+    .historia-pilares-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .historia-pilar-card {
+        min-height: auto;
+    }
+
+
+    /* NÚMEROS */
+
+    .numeros-grid {
+        gap: 5px;
+    }
+
+
+    /* CTA */
+
+    .historia-cta-box {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 560px) {
+
+    /* BANNER */
+
+    .historia-hero {
+        min-height: 300px;
+    }
+
+    .historia-hero-imagem {
+        background-position: 65% center;
+    }
+
+    .historia-hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(4, 35, 82, 0.90) 0%,
+                rgba(5, 49, 100, 0.72) 55%,
+                rgba(5, 49, 100, 0.35) 100%
+            );
+    }
+
+    .historia-hero h1 {
+        max-width: 260px;
+
+        font-size: 43px;
+
+        letter-spacing: -1px;
+    }
+
+    .historia-hero p {
+        max-width: 270px;
+
+        font-size: 16px;
+    }
+
+
+    /* QUEM SOMOS */
+
+    .historia-sobre {
+        padding: 50px 0;
+    }
+
+    .historia-sobre-container {
+        gap: 28px;
+    }
+
+    .historia-sobre-conteudo h2 {
+        font-size: 34px;
+    }
+
+    .historia-sobre-conteudo p {
+        font-size: 15px;
+
+        line-height: 1.65;
+    }
+
+    .historia-sobre-imagem img {
+        height: 250px;
+    }
+
+
+    /* PILARES */
+
+    .historia-pilares {
+        padding: 50px 0;
+    }
+
+    .historia-pilares-cabecalho {
+        margin-bottom: 28px;
+    }
+
+    .historia-pilares-cabecalho h2 {
+        font-size: 32px;
+    }
+
+    .historia-pilar-card {
+        padding: 22px;
+    }
+
+    .historia-pilar-icone {
+        width: 50px;
+        height: 50px;
+
+        margin-bottom: 16px;
+
+        font-size: 22px;
+    }
+
+
+    /* CONFIANÇA EM NÚMEROS */
+
+    .historia-numeros {
+        padding: 45px 0;
+    }
+
+    .historia-numeros-container {
+        gap: 28px;
+    }
+
+    .historia-numeros-imagem {
+        border-radius: 14px;
+    }
+
+    .historia-numeros-imagem img {
+        height: 230px;
+    }
+
+    .historia-numeros-conteudo h2 {
+        font-size: 32px;
+
+        line-height: 1.08;
+    }
+
+    .numeros-grid {
+        grid-template-columns: 1fr;
+
+        margin-top: 25px;
+
+        gap: 0;
+    }
+
+    .numero-item {
+        padding: 18px 10px;
+
+        border-right: none;
+
+        border-bottom: 1px solid #dce8f5;
+    }
+
+    .numero-item:last-child {
+        border-bottom: none;
+    }
+
+
+    /* CTA FINAL */
+
+    .historia-cta {
+        padding: 10px 0 50px;
+    }
+
+    .historia-cta-box {
+        padding: 28px 22px;
+
+        gap: 25px;
+    }
+
+    .historia-cta h2 {
+        font-size: 30px;
+    }
+
+    .historia-cta-botao {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+}
