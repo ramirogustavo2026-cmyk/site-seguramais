@@ -672,6 +672,87 @@ function mostrarEtapaCotacaoAuto() {
 
     }
 
+
+    atualizarProgressoCotacaoAuto();
+
+}
+
+function atualizarProgressoCotacaoAuto() {
+
+    const itens =
+        document.querySelectorAll(
+            ".cotacao-progresso-item"
+        );
+
+
+    const linhas =
+        document.querySelectorAll(
+            ".cotacao-progresso-linha"
+        );
+
+
+    itens.forEach(item => {
+
+        const numeroEtapa =
+            Number(
+                item.dataset.etapa
+            );
+
+
+        item.classList.remove(
+            "ativo",
+            "concluido"
+        );
+
+
+        if (
+            numeroEtapa ===
+            etapaCotacaoAuto
+        ) {
+
+            item.classList.add(
+                "ativo"
+            );
+
+        }
+
+
+        if (
+            numeroEtapa <
+            etapaCotacaoAuto
+        ) {
+
+            item.classList.add(
+                "concluido"
+            );
+
+        }
+
+    });
+
+
+    linhas.forEach(
+        (linha, indice) => {
+
+            linha.classList.remove(
+                "concluida"
+            );
+
+
+            if (
+                indice <
+                etapaCotacaoAuto - 1
+            ) {
+
+                linha.classList.add(
+                    "concluida"
+                );
+
+            }
+
+        }
+    );
+
 }
 
 

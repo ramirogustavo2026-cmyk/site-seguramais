@@ -6113,23 +6113,33 @@ body {
 
 
 .seguro-auto-btn-whatsapp {
-    background-color: #ffd400;
+    background-color: transparent;
 
     color: #071f55;
+
+    border: 1.5px solid #071f55;
 }
 
 
 .seguro-auto-btn-whatsapp i {
-    color: #159d46;
+    color: #071f55;
 
-    font-size: 17px;
+    font-size: 15px;
 }
 
 
 .seguro-auto-btn-whatsapp:hover {
-    background-color: #ffca00;
+    background-color: #071f55;
+
+    border-color: #071f55;
+
+    color: #ffffff;
 
     transform: translateY(-2px);
+}
+
+.seguro-auto-btn-whatsapp:hover i {
+    color: #ffffff;
 }
 
 
@@ -7386,6 +7396,8 @@ body {
     max-width: 500px;
     max-height: 90vh;
 
+    margin: auto;
+
     display: flex;
     flex-direction: column;
 
@@ -8231,4 +8243,174 @@ body {
         padding: 20px 18px;
     }
 
+}
+
+/* =========================================================
+   PROGRESSO DA COTAÇÃO
+========================================================= */
+
+.cotacao-progresso {
+    width: 100%;
+
+    margin-bottom: 28px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+
+.cotacao-progresso-item {
+    min-width: 48px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-align: center;
+}
+
+
+.cotacao-progresso-numero {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #cbd5e1;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        background-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.cotacao-progresso-item.ativo {
+    color: #0b3f91;
+}
+
+
+.cotacao-progresso-item.ativo
+.cotacao-progresso-numero {
+    background-color: #0874f9;
+
+    box-shadow:
+        0 4px 12px rgba(8, 116, 249, 0.25);
+
+    transform: scale(1.04);
+}
+
+
+.cotacao-progresso-item.concluido {
+    color: #5276a4;
+}
+
+
+.cotacao-progresso-item.concluido
+.cotacao-progresso-numero {
+    background-color: #3b82f6;
+}
+
+
+.cotacao-progresso-linha {
+    height: 2px;
+
+    flex: 1;
+
+    margin-top: 16px;
+
+    background-color: #d9e2ec;
+
+    transition:
+        background-color 0.25s ease;
+}
+
+
+.cotacao-progresso-linha.concluida {
+    background-color: #3b82f6;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .cotacao-progresso {
+        margin-bottom: 24px;
+    }
+
+
+    .cotacao-progresso-item {
+        min-width: 42px;
+
+        font-size: 10px;
+    }
+
+
+    .cotacao-progresso-numero {
+        width: 30px;
+        height: 30px;
+
+        font-size: 12px;
+    }
+
+
+    .cotacao-progresso-linha {
+        margin-top: 14px;
+    }
+
+}
+
+#modal-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    display: none;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 16px !important;
+
+    z-index: 5000 !important;
+}
+
+
+#modal-overlay.active {
+    display: flex !important;
+}
+
+
+#modal-overlay .modal-card {
+    position: relative !important;
+
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+
+    margin: 0 !important;
+
+    width: 100% !important;
+    max-width: 500px !important;
 }
