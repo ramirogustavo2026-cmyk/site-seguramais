@@ -6650,6 +6650,7 @@ body {
 
 .seguro-auto-passos {
     margin-top: 26px;
+    margin-bottom: 22px;
 
     display: grid;
 
@@ -6704,7 +6705,7 @@ body {
 
     min-height: 45px;
 
-    margin-top: 25px;
+    margin-top: 0px;
 
     padding: 0 19px;
 
@@ -7337,6 +7338,897 @@ body {
     .seguro-auto-carrossel-trilho
     .seguro-auto-cobertura-card {
         flex: 0 0 100%;
+    }
+
+}
+
+/* =========================================================
+   MODAL DE COTAÇÃO - SEGURO AUTO
+========================================================= */
+
+
+/* OVERLAY */
+
+.modal-overlay {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    padding: 16px;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(30, 41, 59, 0.60);
+
+    backdrop-filter: blur(4px);
+
+    z-index: 5000;
+}
+
+
+.modal-overlay.active {
+    display: flex;
+}
+
+
+/* =========================================================
+   CARD PRINCIPAL
+========================================================= */
+
+.modal-card {
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.18);
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.modal-header {
+    padding: 14px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    flex-shrink: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #05275b 0%,
+            #073f8e 100%
+        );
+}
+
+
+.modal-header-title {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.header-icon-badge {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(255, 255, 255, 0.12);
+
+    color: #ffffff;
+
+    border-radius: 8px;
+}
+
+
+.header-icon-badge svg {
+    width: 19px;
+    height: 19px;
+}
+
+
+.modal-header-title span {
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+}
+
+
+.btn-close {
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #b9c9dc;
+
+    font-size: 27px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: color 0.2s ease;
+}
+
+
+.btn-close:hover {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   CORPO DO MODAL
+========================================================= */
+
+.modal-body {
+    padding: 24px;
+
+    flex: 1 1 auto;
+
+    min-height: 0;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background-color: #ffffff;
+}
+
+
+/* =========================================================
+   TÍTULOS
+========================================================= */
+
+.step-subtitle {
+    margin-bottom: 6px;
+
+    color: #7b93af;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+}
+
+
+.step-title {
+    margin-bottom: 20px;
+
+    color: #071f55;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    line-height: 1.35;
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   CAMPOS
+========================================================= */
+
+.form-row {
+    width: 100%;
+
+    display: flex;
+
+    gap: 12px;
+}
+
+
+.flex-1 {
+    flex: 1;
+}
+
+
+.flex-2 {
+    flex: 2;
+}
+
+
+.input-group {
+    width: 100%;
+
+    margin-bottom: 14px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.input-group label {
+    margin-bottom: 7px;
+
+    color: #334155;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+
+    min-height: 44px;
+
+    padding: 11px 14px;
+
+    border: 1px solid #dbe1e8;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background-color: #ffffff;
+
+    color: #1e293b;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.input-group select {
+    appearance: none;
+
+    padding-right: 38px;
+
+    background-image:
+        url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23334155' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+
+    background-repeat: no-repeat;
+
+    background-position: right 12px center;
+
+    background-size: 16px;
+}
+
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: #0874f9;
+
+    box-shadow:
+        0 0 0 3px rgba(8, 116, 249, 0.10);
+}
+
+
+/* =========================================================
+   BOTÕES SEGURADO / OUTRA PESSOA
+========================================================= */
+
+.options-grid {
+    width: 100%;
+
+    display: grid;
+
+    gap: 10px;
+}
+
+
+.grid-2 {
+    grid-template-columns:
+        1fr 1fr;
+}
+
+
+.btn-option {
+    padding: 11px;
+
+    border: 1.5px solid #cbd5e1;
+
+    border-radius: 10px;
+
+    background-color: #f1f5f9;
+
+    color: #475569;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.btn-option:hover {
+    border-color: #a9c7e9;
+
+    background-color: #eaf4ff;
+}
+
+
+.btn-option.active {
+    border-color: #0874f9;
+
+    background-color: #0874f9;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 4px 12px rgba(8, 116, 249, 0.22);
+}
+
+
+/* =========================================================
+   BOTÕES PRÓXIMO / VOLTAR
+========================================================= */
+
+.modal-footer {
+    margin-top: 24px;
+
+    display: flex;
+
+    gap: 12px;
+}
+
+
+.footer-right {
+    justify-content: flex-end;
+}
+
+
+.footer-espacado {
+    justify-content: space-between;
+}
+
+
+.btn-primary,
+.btn-secondary {
+    padding: 12px 23px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.btn-primary {
+    background-color: #0874f9;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 4px 12px rgba(8, 116, 249, 0.22);
+}
+
+
+.btn-primary:hover {
+    background-color: #005fd7;
+
+    transform: translateY(-1px);
+}
+
+
+.btn-secondary {
+    background-color: #e8eef5;
+
+    color: #475569;
+}
+
+
+.btn-secondary:hover {
+    background-color: #d9e3ed;
+}
+
+
+.btn-primary:disabled,
+.btn-secondary:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   ETAPAS
+========================================================= */
+
+.step {
+    display: none;
+}
+
+
+.step.active {
+    display: block;
+}
+
+
+/* =========================================================
+   ERROS
+========================================================= */
+
+.erro-mensagem {
+    margin-top: 4px;
+
+    display: block;
+
+    color: #dc2626;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    animation: modalFadeIn 0.2s ease;
+}
+
+
+.input-group input.erro,
+.input-group select.erro,
+.input-group textarea.erro {
+    border-color: #dc2626 !important;
+
+    background-color: #fffafa;
+
+    box-shadow:
+        0 0 0 3px rgba(220, 38, 38, 0.08);
+}
+
+
+@keyframes modalFadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(-2px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   AVISO DE PRIVACIDADE
+========================================================= */
+
+.aviso-privacidade {
+    margin-top: 20px;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+}
+
+
+.aviso-privacidade p {
+    margin: 0;
+}
+
+
+.link-privacidade {
+    padding: 0;
+
+    border: none;
+
+    background: none;
+
+    color: #0874f9;
+
+    font: inherit;
+
+    font-weight: 700;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   MODAL PRIVACIDADE
+========================================================= */
+
+.privacidade-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    padding: 16px;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(15, 23, 42, 0.55);
+
+    z-index: 6000;
+}
+
+
+.privacidade-overlay.show {
+    display: flex;
+}
+
+
+.privacidade-card {
+    width: 100%;
+    max-width: 650px;
+    max-height: 85vh;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 55px rgba(15, 23, 42, 0.20);
+}
+
+
+.privacidade-header {
+    padding: 20px 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom:
+        1px solid #e2e8f0;
+}
+
+
+.privacidade-header h2 {
+    margin: 0;
+
+    color: #071f55;
+
+    font-size: 20px;
+}
+
+
+.privacidade-fechar {
+    border: none;
+
+    background: none;
+
+    color: #64748b;
+
+    font-size: 29px;
+
+    cursor: pointer;
+}
+
+
+.privacidade-conteudo {
+    padding: 24px;
+
+    overflow-y: auto;
+
+    color: #475569;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+
+.privacidade-conteudo p {
+    margin-bottom: 16px;
+}
+
+
+.privacidade-conteudo p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   POPUP DE RETORNO
+========================================================= */
+
+.popup-feedback-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(15, 23, 42, 0.45);
+
+    backdrop-filter: blur(4px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+
+    z-index: 7000;
+}
+
+
+.popup-feedback-overlay.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+.popup-feedback-card {
+    width: 100%;
+    max-width: 380px;
+
+    padding: 32px 28px;
+
+    text-align: center;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 24px 60px rgba(15, 23, 42, 0.18);
+
+    transform:
+        translateY(12px)
+        scale(0.98);
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.popup-feedback-overlay.show
+.popup-feedback-card {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+.popup-feedback-icon {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #dcfce7;
+
+    color: #15803d;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+.popup-feedback-card h3 {
+    margin-bottom: 10px;
+
+    color: #071f55;
+
+    font-size: 18px;
+}
+
+
+.popup-feedback-card p {
+    margin-bottom: 24px;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+.popup-feedback-button {
+    width: 100%;
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background-color: #0874f9;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.popup-feedback-button:hover {
+    background-color: #005fd7;
+}
+
+
+.popup-feedback-button:active {
+    transform: scale(0.98);
+}
+
+
+/* ERRO */
+
+.popup-feedback-overlay.erro
+.popup-feedback-icon {
+    background-color: #fee2e2;
+
+    color: #dc2626;
+}
+
+
+/* AVISO */
+
+.popup-feedback-overlay.aviso
+.popup-feedback-icon {
+    background-color: #fef3c7;
+
+    color: #b45309;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE DO MODAL
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .modal-overlay {
+        padding: 8px;
+
+        align-items: center;
+    }
+
+
+    .modal-card {
+        width: 100%;
+
+        max-height:
+            calc(100dvh - 16px);
+
+        border-radius: 16px;
+    }
+
+
+    .modal-body {
+        padding: 20px 16px 28px;
+
+        overflow-y: auto;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+    .form-row {
+        flex-direction: column;
+
+        gap: 0;
+    }
+
+
+    .btn-primary,
+    .btn-secondary {
+        padding: 12px 18px;
+    }
+
+
+    .modal-footer {
+        margin-top: 20px;
+
+        gap: 10px;
+    }
+
+
+    .popup-feedback-card {
+        max-width: 340px;
+
+        padding: 28px 22px;
+    }
+
+
+    .privacidade-card {
+        max-height:
+            calc(100dvh - 20px);
+    }
+
+
+    .privacidade-header {
+        padding: 17px 18px;
+    }
+
+
+    .privacidade-conteudo {
+        padding: 20px 18px;
     }
 
 }
