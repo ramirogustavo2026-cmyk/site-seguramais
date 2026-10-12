@@ -1985,6 +1985,31 @@ body {
     background-color: #082d68;
 }
 
+.historia-hero-etiqueta {
+    margin-bottom: 14px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.historia-hero-etiqueta span {
+    width: 38px;
+    height: 3px;
+
+    display: block;
+
+    background-color: #35a4ff;
+}
+
 
 /* FOTO */
 
@@ -4040,17 +4065,28 @@ body {
 
 
 .pagina-seguros-etiqueta {
-    display: block;
+    margin-bottom: 14px;
 
-    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
 
     color: #173a70;
 
     font-size: 12px;
-
     font-weight: 800;
 
-    letter-spacing: 1.6px;
+    letter-spacing: 1.4px;
+}
+
+.pagina-seguros-etiqueta span {
+    width: 38px;
+    height: 3px;
+
+    display: block;
+
+    background-color: #1677ff;
 }
 
 
