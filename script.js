@@ -481,10 +481,14 @@ let cepValidado = false;
 
 function abrirModal(servico = "Auto") {
 
-    if (
-        servico !== "Auto" &&
-        servico !== "Moto"
-    ) {
+    const servicosPermitidos = [
+        "Auto",
+        "Moto",
+        "Caminhão"
+    ];
+
+
+    if (!servicosPermitidos.includes(servico)) {
         return;
     }
 
@@ -534,6 +538,12 @@ function abrirModal(servico = "Auto") {
         );
 
 
+    const fluxoCaminhao =
+        document.getElementById(
+            "fluxo-caminhao"
+        );
+
+
     if (fluxoAuto) {
         fluxoAuto.style.display = "none";
     }
@@ -541,6 +551,11 @@ function abrirModal(servico = "Auto") {
 
     if (fluxoMoto) {
         fluxoMoto.style.display = "none";
+    }
+
+
+    if (fluxoCaminhao) {
+        fluxoCaminhao.style.display = "none";
     }
 
 
@@ -557,10 +572,8 @@ function abrirModal(servico = "Auto") {
 
 
         if (headerIcon) {
-
             headerIcon.innerHTML =
                 '<i data-lucide="car"></i>';
-
         }
 
 
@@ -585,15 +598,39 @@ function abrirModal(servico = "Auto") {
 
 
         if (headerIcon) {
-
             headerIcon.innerHTML =
                 '<i data-lucide="bike"></i>';
-
         }
 
 
         if (fluxoMoto) {
             fluxoMoto.style.display =
+                "block";
+        }
+
+    }
+
+
+    /* =====================================================
+       SEGURO CAMINHÃO
+    ====================================================== */
+
+    if (servico === "Caminhão") {
+
+        if (headerText) {
+            headerText.textContent =
+                "SEGURO CAMINHÃO";
+        }
+
+
+        if (headerIcon) {
+            headerIcon.innerHTML =
+                '<i data-lucide="truck"></i>';
+        }
+
+
+        if (fluxoCaminhao) {
+            fluxoCaminhao.style.display =
                 "block";
         }
 
@@ -753,10 +790,17 @@ function mostrarEtapaCotacaoAuto() {
 
     } else {
 
-        const sufixo =
-            tipoSeguroAtual === "Moto"
-                ? "moto"
-                : "auto";
+        let sufixo = "auto";
+
+
+        if (tipoSeguroAtual === "Moto") {
+            sufixo = "moto";
+        }
+
+
+        if (tipoSeguroAtual === "Caminhão") {
+            sufixo = "caminhao";
+        }
 
 
         etapa =
@@ -1279,6 +1323,361 @@ function verificarAcidentes(
 }
 
 /* =========================================================
+   CONDICIONAIS - SEGURO CAMINHÃO
+========================================================= */
+
+function verificarFinalidadeCaminhao(valor) {
+
+    const divCargas =
+        document.getElementById("cond-p1-transporte-cargas");
+
+    const divUsoProprio =
+        document.getElementById("cond-p1-uso-proprio");
+
+    const divServico =
+        document.getElementById("cond-p1-servico");
+
+    const divOutro =
+        document.getElementById("cond-p1-outro");
+
+    const grupoTipoCarga =
+        document.getElementById("grp-p2-tipo-carga");
+
+
+    if (divCargas) {
+        divCargas.style.display =
+            valor === "1" ? "block" : "none";
+    }
+
+    if (divUsoProprio) {
+        divUsoProprio.style.display =
+            valor === "2" ? "block" : "none";
+    }
+
+    if (divServico) {
+        divServico.style.display =
+            valor === "3" ? "block" : "none";
+    }
+
+    if (divOutro) {
+        divOutro.style.display =
+            valor === "4" ? "block" : "none";
+    }
+
+    if (grupoTipoCarga) {
+        grupoTipoCarga.style.display =
+            (valor === "1" || valor === "2")
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarTipoCargaCaminhao(valor) {
+
+    const cargaPerigosa =
+        document.getElementById(
+            "cond-p2-carga-perigosa"
+        );
+
+
+    if (cargaPerigosa) {
+        cargaPerigosa.style.display =
+            valor === "5"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarViagensCaminhao(valor) {
+
+    const cidade =
+        document.getElementById("cond-p3-cidade");
+
+    const estado =
+        document.getElementById("cond-p3-estado");
+
+    const estados =
+        document.getElementById("cond-p3-estados");
+
+    const internacional =
+        document.getElementById("cond-p3-internacional");
+
+
+    if (cidade) {
+        cidade.style.display =
+            valor === "1" ? "block" : "none";
+    }
+
+    if (estado) {
+        estado.style.display =
+            valor === "2" ? "block" : "none";
+    }
+
+    if (estados) {
+        estados.style.display =
+            valor === "3" ? "block" : "none";
+    }
+
+    if (internacional) {
+        internacional.style.display =
+            valor === "4" ? "block" : "none";
+    }
+
+}
+
+
+function verificarQuemDirigeCaminhao(valor) {
+
+    const tempoCNH =
+        document.getElementById(
+            "cond-p4-tempo-cnh"
+        );
+
+    const quantidadeMotoristas =
+        document.getElementById(
+            "cond-p4-qtd-motoristas"
+        );
+
+
+    if (tempoCNH) {
+        tempoCNH.style.display =
+            valor === "2"
+                ? "block"
+                : "none";
+    }
+
+    if (quantidadeMotoristas) {
+        quantidadeMotoristas.style.display =
+            valor === "3"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarRastreadorCaminhao(valor) {
+
+    const monitoramento =
+        document.getElementById(
+            "cond-p5-monitoramento"
+        );
+
+    const desejaRastreio =
+        document.getElementById(
+            "cond-p5-deseja-rastreio"
+        );
+
+
+    if (monitoramento) {
+        monitoramento.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+    }
+
+    if (desejaRastreio) {
+        desejaRastreio.style.display =
+            valor === "2"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarEstacionamentoCaminhao(valor) {
+
+    const acesso =
+        document.getElementById(
+            "cond-p6-empresa-acesso"
+        );
+
+    const seguranca =
+        document.getElementById(
+            "cond-p6-estac-seguranca"
+        );
+
+    const ruaNoite =
+        document.getElementById(
+            "cond-p6-via-noite"
+        );
+
+    const outroLocal =
+        document.getElementById(
+            "cond-p6-outro-local"
+        );
+
+
+    if (acesso) {
+        acesso.style.display =
+            valor === "2"
+                ? "block"
+                : "none";
+    }
+
+    if (seguranca) {
+        seguranca.style.display =
+            valor === "3"
+                ? "block"
+                : "none";
+    }
+
+    if (ruaNoite) {
+        ruaNoite.style.display =
+            valor === "4"
+                ? "block"
+                : "none";
+    }
+
+    if (outroLocal) {
+        outroLocal.style.display =
+            valor === "5"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarAcidenteCaminhao(valor) {
+
+    const detalhes =
+        document.getElementById(
+            "cond-p7-detalhes-acidente"
+        );
+
+
+    if (detalhes) {
+        detalhes.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarRouboCaminhao(valor) {
+
+    const detalhes =
+        document.getElementById(
+            "cond-p8-detalhes-roubo"
+        );
+
+
+    if (detalhes) {
+        detalhes.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarTerceirosCaminhao(valor) {
+
+    const limite =
+        document.getElementById(
+            "cond-p10-limite-terceiros"
+        );
+
+
+    if (limite) {
+        limite.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarAcessoriosCaminhao(valor) {
+
+    const detalhes =
+        document.getElementById(
+            "cond-p11-detalhe-acessorios"
+        );
+
+
+    if (detalhes) {
+        detalhes.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarAnoCaminhao(ano) {
+
+    const conservacao =
+        document.getElementById(
+            "cond-p13-conservacao"
+        );
+
+
+    const anoNumero =
+        parseInt(ano, 10);
+
+
+    const anoAtual =
+        new Date().getFullYear();
+
+
+    if (conservacao) {
+
+        conservacao.style.display =
+            (
+                anoNumero &&
+                anoAtual - anoNumero >= 10
+            )
+                ? "block"
+                : "none";
+
+    }
+
+}
+
+
+/* =========================================================
+   MÁSCARA DE MOEDA
+========================================================= */
+
+function mascaraMoeda(valor) {
+
+    valor =
+        valor.replace(/\D/g, "");
+
+
+    if (!valor) {
+        return "";
+    }
+
+
+    const numero =
+        Number(valor) / 100;
+
+
+    return numero.toLocaleString(
+        "pt-BR",
+        {
+            style: "currency",
+            currency: "BRL"
+        }
+    );
+
+}
+
+
+/* =========================================================
    VALIDAÇÃO DO FORMULÁRIO - SEGURO AUTO
 ========================================================= */
 
@@ -1410,10 +1809,17 @@ function validarEtapaCotacaoAuto() {
 
     } else {
 
-        const sufixo =
-            tipoSeguroAtual === "Moto"
-                ? "moto"
-                : "auto";
+        let sufixo = "auto";
+
+
+        if (tipoSeguroAtual === "Moto") {
+            sufixo = "moto";
+        }
+
+
+        if (tipoSeguroAtual === "Caminhão") {
+            sufixo = "caminhao";
+        }
 
 
         etapa =
@@ -2302,22 +2708,32 @@ function enviarFormulario() {
        IDENTIFICA O TIPO DE SEGURO
     ====================================================== */
 
-    const tipoSeguro =
-        tipoSeguroAtual === "Moto"
-            ? "MOTO"
-            : "AUTO";
+    let tipoSeguro = "AUTO";
+    let sufixoFluxo = "auto";
+    let chaveUltimoEnvio =
+        "ultimoEnvioCotacaoAuto";
 
 
-    const sufixoFluxo =
-        tipoSeguroAtual === "Moto"
-            ? "moto"
-            : "auto";
+    if (tipoSeguroAtual === "Moto") {
+
+        tipoSeguro = "MOTO";
+        sufixoFluxo = "moto";
+
+        chaveUltimoEnvio =
+            "ultimoEnvioCotacaoMoto";
+
+    }
 
 
-    const chaveUltimoEnvio =
-        tipoSeguroAtual === "Moto"
-            ? "ultimoEnvioCotacaoMoto"
-            : "ultimoEnvioCotacaoAuto";
+    if (tipoSeguroAtual === "Caminhão") {
+
+        tipoSeguro = "CAMINHÃO";
+        sufixoFluxo = "caminhao";
+
+        chaveUltimoEnvio =
+            "ultimoEnvioCotacaoCaminhao";
+
+    }
 
 
     /* =====================================================
@@ -3113,6 +3529,58 @@ document.addEventListener(
         );
 
     }
+
+
+        /* =================================================
+           VALORES EM REAIS - SEGURO CAMINHÃO
+        ================================================== */
+
+        const valorCaminhaoInput =
+            document.getElementById(
+                "p14-valor-caminhao"
+            );
+
+
+        if (valorCaminhaoInput) {
+
+            valorCaminhaoInput.addEventListener(
+                "input",
+                () => {
+
+                    valorCaminhaoInput.value =
+                        mascaraMoeda(
+                            valorCaminhaoInput.value
+                        );
+
+                }
+            );
+
+        }
+
+
+        const valorAcessoriosInput =
+            document.getElementById(
+                "p11-valor-aproximado"
+            );
+
+
+        if (valorAcessoriosInput) {
+
+            valorAcessoriosInput.addEventListener(
+                "input",
+                () => {
+
+                    valorAcessoriosInput.value =
+                        mascaraMoeda(
+                            valorAcessoriosInput.value
+                        );
+
+                }
+            );
+
+        }
+
+
         carregarProfissoes();
         carregarMarcasFIPE();
 
@@ -3148,6 +3616,18 @@ if (
 ) {
 
     abrirModal("Moto");
+
+}
+
+
+if (
+    abrirCotacao === "caminhao" &&
+    document.getElementById(
+        "modal-overlay"
+    )
+) {
+
+    abrirModal("Caminhão");
 
 }
     }
