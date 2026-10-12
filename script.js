@@ -13,12 +13,8 @@ let indiceAtual = 0;
 
 function quantidadeVisivel() {
 
-    if (window.innerWidth <= 560) {
+    if (window.innerWidth <= 900) {
         return 1;
-    }
-
-    if (window.innerWidth <= 800) {
-        return 2;
     }
 
     return 3;
