@@ -473,26 +473,41 @@ if (
 ========================================================= */
 
 let etapaCotacaoAuto = 1;
+
+let tipoSeguroAtual = "Auto";
+
 let cepValidado = false;
 
 
-/* =========================================================
-   ABRIR MODAL
-========================================================= */
-
 function abrirModal(servico = "Auto") {
 
-    if (servico !== "Auto") {
+    if (
+        servico !== "Auto" &&
+        servico !== "Moto"
+    ) {
         return;
     }
 
-    const modal = document.getElementById("modal-overlay");
 
-    const fluxoAuto = document.getElementById("fluxo-auto");
+    tipoSeguroAtual = servico;
 
-    const headerText = document.getElementById(
-        "modal-header-text"
-    );
+
+    const modal =
+        document.getElementById(
+            "modal-overlay"
+        );
+
+
+    const headerText =
+        document.getElementById(
+            "modal-header-text"
+        );
+
+
+    const headerIcon =
+        document.getElementById(
+            "modal-header-icon"
+        );
 
 
     if (!modal) {
@@ -503,13 +518,85 @@ function abrirModal(servico = "Auto") {
     etapaCotacaoAuto = 1;
 
 
-    if (headerText) {
-        headerText.textContent = "SEGURO AUTO";
-    }
+    /* =====================================================
+       ESCONDE OS FLUXOS
+    ====================================================== */
+
+    const fluxoAuto =
+        document.getElementById(
+            "fluxo-auto"
+        );
+
+
+    const fluxoMoto =
+        document.getElementById(
+            "fluxo-moto"
+        );
 
 
     if (fluxoAuto) {
-        fluxoAuto.style.display = "block";
+        fluxoAuto.style.display = "none";
+    }
+
+
+    if (fluxoMoto) {
+        fluxoMoto.style.display = "none";
+    }
+
+
+    /* =====================================================
+       SEGURO AUTO
+    ====================================================== */
+
+    if (servico === "Auto") {
+
+        if (headerText) {
+            headerText.textContent =
+                "SEGURO AUTO";
+        }
+
+
+        if (headerIcon) {
+
+            headerIcon.innerHTML =
+                '<i data-lucide="car"></i>';
+
+        }
+
+
+        if (fluxoAuto) {
+            fluxoAuto.style.display =
+                "block";
+        }
+
+    }
+
+
+    /* =====================================================
+       SEGURO MOTO
+    ====================================================== */
+
+    if (servico === "Moto") {
+
+        if (headerText) {
+            headerText.textContent =
+                "SEGURO MOTO";
+        }
+
+
+        if (headerIcon) {
+
+            headerIcon.innerHTML =
+                '<i data-lucide="bike"></i>';
+
+        }
+
+
+        if (fluxoMoto) {
+            fluxoMoto.style.display =
+                "block";
+        }
+
     }
 
 
@@ -521,11 +608,16 @@ function abrirModal(servico = "Auto") {
     modal.classList.add("active");
 
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+        "hidden";
 
 
-    if (typeof lucide !== "undefined") {
+    if (
+        typeof lucide !== "undefined"
+    ) {
+
         lucide.createIcons();
+
     }
 
 }
@@ -636,9 +728,12 @@ function mostrarEtapaCotacaoAuto() {
 
     etapas.forEach(etapa => {
 
-        etapa.classList.remove("active");
+        etapa.classList.remove(
+            "active"
+        );
 
-        etapa.style.display = "none";
+        etapa.style.display =
+            "none";
 
     });
 
@@ -651,24 +746,35 @@ function mostrarEtapaCotacaoAuto() {
         etapaCotacaoAuto === 2
     ) {
 
-        etapa = document.getElementById(
-            `step-${etapaCotacaoAuto}`
-        );
+        etapa =
+            document.getElementById(
+                `step-${etapaCotacaoAuto}`
+            );
 
     } else {
 
-        etapa = document.getElementById(
-            `step-${etapaCotacaoAuto}-auto`
-        );
+        const sufixo =
+            tipoSeguroAtual === "Moto"
+                ? "moto"
+                : "auto";
+
+
+        etapa =
+            document.getElementById(
+                `step-${etapaCotacaoAuto}-${sufixo}`
+            );
 
     }
 
 
     if (etapa) {
 
-        etapa.classList.add("active");
+        etapa.classList.add(
+            "active"
+        );
 
-        etapa.style.display = "block";
+        etapa.style.display =
+            "block";
 
     }
 
@@ -676,6 +782,7 @@ function mostrarEtapaCotacaoAuto() {
     atualizarProgressoCotacaoAuto();
 
 }
+
 
 function atualizarProgressoCotacaoAuto() {
 
@@ -873,6 +980,305 @@ function selecionarTipoCondutor(
 }
 
 /* =========================================================
+   CONDICIONAIS - SEGURO MOTO
+========================================================= */
+
+
+/* USO DA MOTO */
+
+function verificarUsoMoto(valor) {
+
+    const local =
+        document.getElementById(
+            "cond-p1-local"
+        );
+
+
+    const km =
+        document.getElementById(
+            "cond-p1-km"
+        );
+
+
+    if (local) {
+
+        local.style.display =
+            (
+                valor === "1" ||
+                valor === "3"
+            )
+                ? "block"
+                : "none";
+
+    }
+
+
+    if (km) {
+
+        km.style.display =
+            (
+                valor === "2" ||
+                valor === "3"
+            )
+                ? "block"
+                : "none";
+
+    }
+
+}
+
+
+/* GARAGEM À NOITE */
+
+function verificarGaragemNoite(
+    valor
+) {
+
+    const tipoGaragem =
+        document.getElementById(
+            "cond-p2-tipo-garagem"
+        );
+
+
+    const localNoite =
+        document.getElementById(
+            "cond-p2-onde-estaciona"
+        );
+
+
+    if (tipoGaragem) {
+
+        tipoGaragem.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+
+    }
+
+
+    if (localNoite) {
+
+        localNoite.style.display =
+            valor === "2"
+                ? "block"
+                : "none";
+
+    }
+
+}
+
+
+/* ESTACIONAMENTO NO TRABALHO */
+
+function verificarEstacionamentoTrabalho(
+    valor
+) {
+
+    const seguranca =
+        document.getElementById(
+            "cond-p3-seguranca"
+        );
+
+
+    const alertaRua =
+        document.getElementById(
+            "cond-p3-alerta-rua"
+        );
+
+
+    if (seguranca) {
+
+        seguranca.style.display =
+            valor === "2"
+                ? "block"
+                : "none";
+
+    }
+
+
+    if (alertaRua) {
+
+        alertaRua.style.display =
+            valor === "3"
+                ? "block"
+                : "none";
+
+    }
+
+}
+
+
+/* ENTREGAS */
+
+function verificarEntregas(
+    valor
+) {
+
+    const horas =
+        document.getElementById(
+            "cond-p4-horas"
+        );
+
+
+    if (horas) {
+
+        horas.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+
+    }
+
+}
+
+
+/* IDADE */
+
+function verificarIdadeMoto(
+    valor
+) {
+
+    const alerta =
+        document.getElementById(
+            "alerta-bloqueio-idade"
+        );
+
+
+    const botao =
+        document.getElementById(
+            "btn-next-step-4-moto"
+        );
+
+
+    if (
+        valor === "menos_18"
+    ) {
+
+        if (alerta) {
+
+            alerta.style.display =
+                "block";
+
+        }
+
+
+        if (botao) {
+
+            botao.disabled =
+                true;
+
+        }
+
+    } else {
+
+        if (alerta) {
+
+            alerta.style.display =
+                "none";
+
+        }
+
+
+        if (botao) {
+
+            botao.disabled =
+                false;
+
+        }
+
+    }
+
+}
+
+
+/* TEMPO DE HABILITAÇÃO */
+
+function verificarHabilitacaoMoto(
+    valor
+) {
+
+    const experiencia =
+        document.getElementById(
+            "cond-p6-experiencia"
+        );
+
+
+    if (experiencia) {
+
+        experiencia.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+
+    }
+
+}
+
+
+/* FINALIDADE DO SEGURO */
+
+function verificarFinalidadeSeguro(
+    valor
+) {
+
+    const coberturas =
+        document.getElementById(
+            "cond-p8-coberturas"
+        );
+
+
+    if (coberturas) {
+
+        coberturas.style.display =
+            valor === "4"
+                ? "block"
+                : "none";
+
+    }
+
+}
+
+
+/* HISTÓRICO DE ACIDENTES */
+
+function verificarAcidentes(
+    valor
+) {
+
+    const detalhes =
+        document.getElementById(
+            "cond-p9-detalhes-acidente"
+        );
+
+
+    const observacoes =
+        document.getElementById(
+            "cond-p9-observacoes"
+        );
+
+
+    if (detalhes) {
+
+        detalhes.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+
+    }
+
+
+    if (observacoes) {
+
+        observacoes.style.display =
+            valor === "2"
+                ? "block"
+                : "none";
+
+    }
+
+}
+
+/* =========================================================
    VALIDAÇÃO DO FORMULÁRIO - SEGURO AUTO
 ========================================================= */
 
@@ -1004,9 +1410,15 @@ function validarEtapaCotacaoAuto() {
 
     } else {
 
+        const sufixo =
+            tipoSeguroAtual === "Moto"
+                ? "moto"
+                : "auto";
+
+
         etapa =
             document.getElementById(
-                `step-${etapaCotacaoAuto}-auto`
+                `step-${etapaCotacaoAuto}-${sufixo}`
             );
 
     }
@@ -1854,7 +2266,9 @@ const TEMPO_ENTRE_ENVIOS_AUTO = 60000;
 
 function enviarFormulario() {
 
-    /* valida a etapa 5 antes de enviar */
+    /* =====================================================
+       VALIDA A ETAPA ATUAL
+    ====================================================== */
 
     if (!validarEtapaCotacaoAuto()) {
         return;
@@ -1885,13 +2299,35 @@ function enviarFormulario() {
 
 
     /* =====================================================
+       IDENTIFICA O TIPO DE SEGURO
+    ====================================================== */
+
+    const tipoSeguro =
+        tipoSeguroAtual === "Moto"
+            ? "MOTO"
+            : "AUTO";
+
+
+    const sufixoFluxo =
+        tipoSeguroAtual === "Moto"
+            ? "moto"
+            : "auto";
+
+
+    const chaveUltimoEnvio =
+        tipoSeguroAtual === "Moto"
+            ? "ultimoEnvioCotacaoMoto"
+            : "ultimoEnvioCotacaoAuto";
+
+
+    /* =====================================================
        LIMITE ENTRE ENVIOS
     ====================================================== */
 
     const ultimoEnvio =
         Number(
             localStorage.getItem(
-                "ultimoEnvioCotacaoAuto"
+                chaveUltimoEnvio
             )
         ) || 0;
 
@@ -1930,7 +2366,7 @@ function enviarFormulario() {
 
 
     /* =====================================================
-       BLOCOS QUE SERÃO ENVIADOS
+       ETAPAS GERAIS
     ====================================================== */
 
     const etapaCliente =
@@ -1945,16 +2381,20 @@ function enviarFormulario() {
         );
 
 
-    const fluxoAuto =
+    /* =====================================================
+       FLUXO ESPECÍFICO
+    ====================================================== */
+
+    const fluxoSeguro =
         document.getElementById(
-            "fluxo-auto"
+            `fluxo-${sufixoFluxo}`
         );
 
 
-    if (!fluxoAuto) {
+    if (!fluxoSeguro) {
 
         console.error(
-            "Fluxo Auto não encontrado."
+            `Fluxo ${tipoSeguro} não encontrado.`
         );
 
 
@@ -1962,7 +2402,7 @@ function enviarFormulario() {
 
             "Erro no formulário",
 
-            "Não foi possível identificar o formulário do Seguro Auto.",
+            `Não foi possível identificar o formulário do Seguro ${tipoSeguro}.`,
 
             "erro"
 
@@ -1979,7 +2419,7 @@ function enviarFormulario() {
 
     const botaoEnviar =
         document.querySelector(
-            "#step-5-auto .btn-primary"
+            `#step-5-${sufixoFluxo} .btn-primary`
         );
 
 
@@ -2016,191 +2456,224 @@ function enviarFormulario() {
     ====================================================== */
 
     let dadosResumo =
-        "Nova Cotação de Seguro: AUTO\n\n";
+        `Nova Cotação de Seguro: ${tipoSeguro}\n\n`;
 
 
     dadosResumo +=
         "Detalhes do Cliente / Formulário:\n";
 
 
-    function coletarCampos(container) {
+   function coletarCampos(container) {
 
-        if (!container) {
+    if (!container) {
+        return;
+    }
+
+
+    const campos =
+        container.querySelectorAll(
+            "input, select, textarea"
+        );
+
+
+    campos.forEach(campo => {
+
+        /* =================================================
+           IGNORA TIPOS DESNECESSÁRIOS
+        ================================================== */
+
+        if (
+            campo.type === "hidden" ||
+            campo.type === "submit" ||
+            campo.type === "button"
+        ) {
             return;
         }
 
 
-        const campos =
-            container.querySelectorAll(
-                "input, select, textarea"
+        /* =================================================
+           IGNORA CAMPOS DESABILITADOS
+        ================================================== */
+
+        if (campo.disabled) {
+            return;
+        }
+
+
+        /* =================================================
+           IGNORA HONEYPOT
+        ================================================== */
+
+        if (
+            campo.id === "site-contato"
+        ) {
+            return;
+        }
+
+
+        /* =================================================
+           IGNORA APENAS CONDICIONAIS ESCONDIDAS
+
+           IMPORTANTE:
+           Não verificamos se a própria etapa está escondida,
+           pois etapas anteriores ficam display:none depois
+           que o usuário avança.
+        ================================================== */
+
+        let elementoPai =
+            campo.parentElement;
+
+
+        let campoCondicionalOculto =
+            false;
+
+
+        while (
+            elementoPai &&
+            !elementoPai.classList.contains(
+                "step"
+            )
+        ) {
+
+            const estilo =
+                window.getComputedStyle(
+                    elementoPai
+                );
+
+
+            if (
+                estilo.display === "none"
+            ) {
+
+                campoCondicionalOculto =
+                    true;
+
+                break;
+            }
+
+
+            elementoPai =
+                elementoPai.parentElement;
+
+        }
+
+
+        if (campoCondicionalOculto) {
+            return;
+        }
+
+
+        /* =================================================
+           RADIO / CHECKBOX
+        ================================================== */
+
+        if (
+            campo.type === "radio" ||
+            campo.type === "checkbox"
+        ) {
+
+            if (!campo.checked) {
+                return;
+            }
+
+        } else {
+
+            if (
+                !campo.value ||
+                campo.value.trim() === ""
+            ) {
+                return;
+            }
+
+        }
+
+
+        /* =================================================
+           DESCOBRIR O RÓTULO
+        ================================================== */
+
+        let rotulo =
+            campo.name ||
+            campo.id ||
+            "Campo";
+
+
+        const label =
+            document.querySelector(
+                `label[for="${campo.id}"]`
             );
 
 
-        campos.forEach(campo => {
+        if (label) {
 
-            /* ignora tipos desnecessários */
+            rotulo =
+                label.innerText
+                    .replace("*", "")
+                    .replace(":", "")
+                    .trim();
 
-            if (
-                campo.type === "hidden" ||
-                campo.type === "submit" ||
-                campo.type === "button"
-            ) {
-                return;
-            }
+        }
 
 
-            /* ignora campos desabilitados */
+        /* =================================================
+           FORMATAR O VALOR
+        ================================================== */
 
-            if (campo.disabled) {
-                return;
-            }
-
-
-            /* ignora honeypot */
-
-            if (
-                campo.id === "site-contato"
-            ) {
-                return;
-            }
+        let valorFormatado =
+            campo.value;
 
 
-            /* radio / checkbox */
+        if (
+            campo.tagName.toLowerCase() ===
+            "select"
+        ) {
 
-            if (
-                campo.type === "radio" ||
-                campo.type === "checkbox"
-            ) {
-
-                if (!campo.checked) {
-                    return;
-                }
-
-            } else {
-
-                if (
-                    !campo.value ||
-                    campo.value.trim() === ""
-                ) {
-                    return;
-                }
-
-            }
+            const opcao =
+                campo.options[
+                    campo.selectedIndex
+                ];
 
 
-            /* =================================================
-               IGNORA CAMPOS ESCONDIDOS
-            ================================================== */
+            if (opcao) {
 
-            const blocoCondicional =
-                campo.closest(
-                    "#campos-outra-pessoa"
-                );
-
-
-            if (blocoCondicional) {
-
-                const estilo =
-                    window.getComputedStyle(
-                        blocoCondicional
-                    );
+                const textoOpcao =
+                    opcao.text.trim();
 
 
                 if (
-                    estilo.display === "none"
+                    textoOpcao &&
+                    !textoOpcao
+                        .toLowerCase()
+                        .includes("selecione") &&
+                    !textoOpcao
+                        .toLowerCase()
+                        .includes("carregando")
                 ) {
-                    return;
-                }
 
-            }
-
-
-            /* =================================================
-               DESCOBRIR O RÓTULO
-            ================================================== */
-
-            let rotulo =
-                campo.name ||
-                campo.id ||
-                "Campo";
-
-
-            const label =
-                document.querySelector(
-                    `label[for="${campo.id}"]`
-                );
-
-
-            if (label) {
-
-                rotulo =
-                    label.innerText
-                        .replace("*", "")
-                        .replace(":", "")
-                        .trim();
-
-            }
-
-
-            /* =================================================
-               VALOR
-            ================================================== */
-
-            let valorFormatado =
-                campo.value;
-
-
-            if (
-                campo.tagName.toLowerCase() ===
-                "select"
-            ) {
-
-                const opcao =
-                    campo.options[
-                        campo.selectedIndex
-                    ];
-
-
-                if (opcao) {
-
-                    const textoOpcao =
-                        opcao.text.trim();
-
-
-                    if (
-                        textoOpcao &&
-                        !textoOpcao
-                            .toLowerCase()
-                            .includes(
-                                "selecione"
-                            ) &&
-                        !textoOpcao
-                            .toLowerCase()
-                            .includes(
-                                "carregando"
-                            )
-                    ) {
-
-                        valorFormatado =
-                            textoOpcao;
-
-                    }
+                    valorFormatado =
+                        textoOpcao;
 
                 }
 
             }
 
+        }
 
-            dadosResumo +=
-                `- ${rotulo}: ${valorFormatado}\n`;
 
-        });
+        /* =================================================
+           ADICIONAR AO E-MAIL
+        ================================================== */
 
-    }
+        dadosResumo +=
+            `- ${rotulo}: ${valorFormatado}\n`;
+
+    });
+
+}
 
 
     /* =====================================================
-       COLETAR SOMENTE AUTO
+       COLETA DADOS
     ====================================================== */
 
     coletarCampos(
@@ -2214,7 +2687,7 @@ function enviarFormulario() {
 
 
     coletarCampos(
-        fluxoAuto
+        fluxoSeguro
     );
 
 
@@ -2225,7 +2698,7 @@ function enviarFormulario() {
     const parametrosEnvio = {
 
         tipo_seguro:
-            "AUTO",
+            tipoSeguro,
 
         mensagem_completa:
             dadosResumo,
@@ -2257,14 +2730,14 @@ function enviarFormulario() {
         .then(response => {
 
             console.log(
-                "E-mail enviado com sucesso!",
+                `${tipoSeguro} enviado com sucesso!`,
                 response
             );
 
 
             localStorage.setItem(
 
-                "ultimoEnvioCotacaoAuto",
+                chaveUltimoEnvio,
 
                 Date.now()
 
@@ -2293,12 +2766,12 @@ function enviarFormulario() {
             }
 
 
-            /* fecha o formulário */
+            /* fecha modal */
 
             fecharModal();
 
 
-            /* popup de sucesso */
+            /* popup */
 
             mostrarPopupFeedback(
 
@@ -2353,8 +2826,6 @@ function enviarFormulario() {
         });
 
 }
-
-
 /* =========================================================
    POPUP DE FEEDBACK
 ========================================================= */
@@ -2645,23 +3116,40 @@ document.addEventListener(
         carregarProfissoes();
         carregarMarcasFIPE();
 
-    const parametrosURL =
+const parametrosURL =
     new URLSearchParams(
         window.location.search
-        );
-
-    const abrirCotacao =
-        parametrosURL.get("cotacao");
+    );
 
 
-    if (
-        abrirCotacao === "auto" &&
-        document.getElementById("modal-overlay")
-    ) {
+const abrirCotacao =
+    parametrosURL.get(
+        "cotacao"
+    );
 
-        abrirModal("Auto");
 
-    }
+if (
+    abrirCotacao === "auto" &&
+    document.getElementById(
+        "modal-overlay"
+    )
+) {
+
+    abrirModal("Auto");
+
+}
+
+
+if (
+    abrirCotacao === "moto" &&
+    document.getElementById(
+        "modal-overlay"
+    )
+) {
+
+    abrirModal("Moto");
+
+}
     }
     
 );

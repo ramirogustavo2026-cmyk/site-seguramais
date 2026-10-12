@@ -8414,3 +8414,1376 @@ body {
     width: 100% !important;
     max-width: 500px !important;
 }
+
+/* =========================================================
+   SEGURO MOTO
+========================================================= */
+
+
+/* =========================================================
+   ETIQUETAS
+========================================================= */
+
+.seguro-moto-etiqueta {
+    margin-bottom: 14px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: #315d91;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+}
+
+
+.seguro-moto-etiqueta > span {
+    width: 38px;
+    height: 3px;
+
+    display: block;
+
+    flex-shrink: 0;
+
+    background-color: #1677ff;
+}
+
+
+.seguro-moto-etiqueta-centro {
+    justify-content: center;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.seguro-moto-hero {
+    position: relative;
+
+    min-height: 500px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background-color: #061e49;
+}
+
+
+/* FOTO */
+
+.seguro-moto-hero-imagem {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        url("imagens/seguro-moto/banner-seguro-moto.png");
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    background-position: center;
+
+    z-index: 0;
+}
+
+
+/* DEGRADÊ */
+
+.seguro-moto-hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4, 24, 58, 0.96) 0%,
+            rgba(4, 24, 58, 0.90) 28%,
+            rgba(4, 24, 58, 0.72) 45%,
+            rgba(4, 24, 58, 0.34) 66%,
+            rgba(4, 24, 58, 0.08) 85%,
+            rgba(4, 24, 58, 0) 100%
+        );
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* CONTAINER */
+
+.seguro-moto-hero-container {
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 500px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* CONTEÚDO */
+
+.seguro-moto-hero-conteudo {
+    width: 52%;
+
+    padding: 52px 0;
+}
+
+
+.seguro-moto-hero .seguro-moto-etiqueta {
+    color: #d5e5f8;
+}
+
+
+.seguro-moto-hero .seguro-moto-etiqueta > span {
+    background-color: #258cff;
+}
+
+
+.seguro-moto-hero h1 {
+    max-width: 640px;
+
+    color: #ffffff;
+
+    font-size: clamp(43px, 5vw, 61px);
+
+    line-height: 1.04;
+
+    letter-spacing: -1.8px;
+}
+
+
+.seguro-moto-hero h1 strong {
+    color: #4ca1ff;
+}
+
+
+.seguro-moto-hero p {
+    max-width: 520px;
+
+    margin-top: 18px;
+
+    color: #e1ebf7;
+
+    font-size: 17px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   BOTÕES DO HERO
+========================================================= */
+
+.seguro-moto-hero-acoes {
+    margin-top: 26px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+
+.seguro-moto-btn-principal,
+.seguro-moto-btn-whatsapp {
+    min-height: 46px;
+
+    padding: 0 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.seguro-moto-btn-principal {
+    background-color: #0874f9;
+
+    color: #ffffff;
+
+    border: 1.5px solid #0874f9;
+}
+
+
+.seguro-moto-btn-principal:hover {
+    background-color: #005fd7;
+
+    border-color: #005fd7;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 18px rgba(0, 80, 190, 0.25);
+}
+
+
+.seguro-moto-btn-whatsapp {
+    background-color: transparent;
+
+    color: #ffffff;
+
+    border: 1.5px solid rgba(255, 255, 255, 0.90);
+}
+
+
+.seguro-moto-btn-whatsapp i {
+    color: #ffffff;
+
+    font-size: 15px;
+}
+
+
+.seguro-moto-btn-whatsapp:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+
+    border-color: #ffffff;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   BENEFÍCIOS DO HERO
+========================================================= */
+
+.seguro-moto-hero-beneficios {
+    margin-top: 32px;
+
+    padding-top: 21px;
+
+    display: flex;
+    align-items: center;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.20);
+}
+
+
+.seguro-moto-hero-beneficios > div {
+    min-width: 145px;
+
+    padding: 0 17px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    border-right:
+        1px solid rgba(255, 255, 255, 0.20);
+}
+
+
+.seguro-moto-hero-beneficios > div:first-child {
+    padding-left: 0;
+}
+
+
+.seguro-moto-hero-beneficios > div:last-child {
+    border-right: none;
+}
+
+
+.seguro-moto-hero-beneficios i {
+    color: #57a8ff;
+
+    font-size: 22px;
+}
+
+
+.seguro-moto-hero-beneficios span {
+    color: #cedef1;
+
+    font-size: 11px;
+
+    line-height: 1.35;
+}
+
+
+.seguro-moto-hero-beneficios strong {
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   CABEÇALHOS
+========================================================= */
+
+.seguro-moto-cabecalho {
+    max-width: 780px;
+
+    margin: 0 auto 36px;
+
+    text-align: center;
+}
+
+
+.seguro-moto-cabecalho h2 {
+    color: #071f55;
+
+    font-size: clamp(33px, 4vw, 45px);
+
+    line-height: 1.07;
+
+    letter-spacing: -1px;
+}
+
+
+.seguro-moto-cabecalho h2 strong {
+    color: #1677ff;
+}
+
+
+.seguro-moto-cabecalho > p {
+    max-width: 630px;
+
+    margin: 12px auto 0;
+
+    color: #5276a4;
+
+    font-size: 15px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   COBERTURAS
+========================================================= */
+
+.seguro-moto-coberturas {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 65px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f5faff 100%
+        );
+}
+
+
+.seguro-moto-coberturas::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    left: -210px;
+    top: -190px;
+
+    border-radius: 50%;
+
+    background-color:
+        rgba(22, 119, 255, 0.04);
+
+    pointer-events: none;
+}
+
+
+.seguro-moto-coberturas-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+.seguro-moto-cobertura-card {
+    min-height: 235px;
+
+    padding: 26px 21px;
+
+    background-color: #ffffff;
+
+    border:
+        1px solid #e7eef7;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 6px 22px rgba(20, 80, 150, 0.07);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.seguro-moto-cobertura-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #cfe2f7;
+
+    box-shadow:
+        0 11px 28px rgba(20, 80, 150, 0.12);
+}
+
+
+.seguro-moto-cobertura-icone {
+    width: 54px;
+    height: 54px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #eaf4ff;
+
+    color: #1677ff;
+
+    font-size: 22px;
+}
+
+
+.seguro-moto-cobertura-card h3 {
+    color: #071f55;
+
+    font-size: 17px;
+
+    line-height: 1.25;
+}
+
+
+.seguro-moto-cobertura-card p {
+    margin-top: 9px;
+
+    color: #5276a4;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   VANTAGENS
+========================================================= */
+
+.seguro-moto-vantagens {
+    padding: 0;
+
+    background-color: #ffffff;
+}
+
+
+.seguro-moto-vantagens-container {
+    width: 100%;
+    max-width: none;
+
+    display: grid;
+
+    grid-template-columns:
+        0.85fr 1.15fr;
+
+    align-items: stretch;
+}
+
+
+.seguro-moto-vantagens-imagem {
+    min-height: 500px;
+
+    overflow: hidden;
+}
+
+
+.seguro-moto-vantagens-imagem img {
+    width: 100%;
+    height: 100%;
+
+    min-height: 500px;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition:
+        transform 0.45s ease;
+}
+
+
+.seguro-moto-vantagens-imagem:hover img {
+    transform: scale(1.02);
+}
+
+
+.seguro-moto-vantagens-conteudo {
+    padding: 55px 7vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7fbff 0%,
+            #edf6ff 100%
+        );
+}
+
+
+.seguro-moto-vantagens-conteudo h2 {
+    max-width: 650px;
+
+    color: #071f55;
+
+    font-size: clamp(34px, 4vw, 47px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1px;
+}
+
+
+.seguro-moto-vantagens-conteudo h2 strong {
+    color: #1677ff;
+}
+
+
+.seguro-moto-vantagens-intro {
+    max-width: 650px;
+
+    margin-top: 14px;
+
+    color: #5276a4;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+.seguro-moto-vantagens-grid {
+    margin-top: 28px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        22px 30px;
+}
+
+
+.seguro-moto-vantagem {
+    display: flex;
+
+    gap: 15px;
+}
+
+
+.seguro-moto-vantagem-icone {
+    min-width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #ffffff;
+
+    color: #1677ff;
+
+    font-size: 18px;
+
+    box-shadow:
+        0 4px 14px rgba(20, 80, 150, 0.08);
+}
+
+
+.seguro-moto-vantagem h3 {
+    color: #071f55;
+
+    font-size: 15px;
+
+    line-height: 1.25;
+}
+
+
+.seguro-moto-vantagem p {
+    margin-top: 5px;
+
+    color: #5276a4;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   COTAÇÃO
+========================================================= */
+
+.seguro-moto-cotacao {
+    padding: 65px 0;
+
+    background-color: #ffffff;
+}
+
+
+.seguro-moto-cotacao-box {
+    overflow: hidden;
+
+    min-height: 380px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 0.82fr;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef7ff 0%,
+            #e3f1ff 100%
+        );
+
+    box-shadow:
+        0 8px 28px rgba(20, 80, 150, 0.09);
+}
+
+
+.seguro-moto-cotacao-conteudo {
+    padding: 42px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.seguro-moto-cotacao-conteudo h2 {
+    max-width: 570px;
+
+    color: #071f55;
+
+    font-size: clamp(34px, 4vw, 47px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1px;
+}
+
+
+.seguro-moto-cotacao-conteudo h2 strong {
+    color: #1677ff;
+}
+
+
+.seguro-moto-cotacao-conteudo > p {
+    max-width: 550px;
+
+    margin-top: 13px;
+
+    color: #5276a4;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+}
+
+
+/* PASSOS */
+
+.seguro-moto-passos {
+    margin-top: 26px;
+    margin-bottom: 22px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 14px;
+}
+
+
+.seguro-moto-passo {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.seguro-moto-passo strong {
+    min-width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #1677ff;
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+.seguro-moto-passo span {
+    color: #173e72;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+}
+
+
+/* IMAGEM */
+
+.seguro-moto-cotacao-imagem {
+    overflow: hidden;
+}
+
+
+.seguro-moto-cotacao-imagem img {
+    width: 100%;
+    height: 100%;
+
+    min-height: 380px;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.seguro-moto-cotacao-box:hover
+.seguro-moto-cotacao-imagem img {
+    transform: scale(1.02);
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.seguro-moto-faq {
+    padding: 65px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8fbff 0%,
+            #eef7ff 100%
+        );
+}
+
+
+.seguro-moto-faq-lista {
+    max-width: 920px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px 18px;
+}
+
+
+.seguro-moto-faq-item {
+    overflow: hidden;
+
+    background-color: #ffffff;
+
+    border-radius: 11px;
+
+    box-shadow:
+        0 4px 16px rgba(20, 80, 150, 0.06);
+}
+
+
+.seguro-moto-faq-item summary {
+    min-height: 58px;
+
+    padding: 14px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    list-style: none;
+
+    color: #071f55;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.seguro-moto-faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+
+.seguro-moto-faq-item summary i {
+    color: #1677ff;
+
+    font-size: 13px;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.seguro-moto-faq-item[open] summary i {
+    transform: rotate(45deg);
+}
+
+
+.seguro-moto-faq-item p {
+    padding:
+        0 18px 18px;
+
+    color: #5276a4;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   CTA FINAL
+========================================================= */
+
+.seguro-moto-cta {
+    padding: 25px 0 70px;
+
+    background-color: #ffffff;
+}
+
+
+.seguro-moto-cta-box {
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 180px;
+
+    padding: 35px 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 35px;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #05275b 0%,
+            #064293 100%
+        );
+}
+
+
+.seguro-moto-cta-box::after {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    right: -100px;
+    bottom: -180px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(22, 119, 255, 0.15);
+
+    pointer-events: none;
+}
+
+
+.seguro-moto-cta-box > div {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+.seguro-moto-cta-etiqueta {
+    margin-bottom: 10px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    color: #c9dcf4;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.seguro-moto-cta-etiqueta span {
+    width: 36px;
+    height: 2px;
+
+    display: block;
+
+    background-color: #35a4ff;
+}
+
+
+.seguro-moto-cta h2 {
+    color: #ffffff;
+
+    font-size: clamp(30px, 4vw, 42px);
+
+    line-height: 1.05;
+}
+
+
+.seguro-moto-cta h2 strong {
+    color: #35a4ff;
+}
+
+
+.seguro-moto-cta p {
+    max-width: 610px;
+
+    margin-top: 9px;
+
+    color: #d5e5f8;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+.seguro-moto-cta-box > a {
+    position: relative;
+
+    z-index: 1;
+
+    flex-shrink: 0;
+
+    min-height: 47px;
+
+    padding: 0 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    background-color: #ffd400;
+
+    color: #071f55;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.seguro-moto-cta-box > a i {
+    color: #159d46;
+
+    font-size: 17px;
+}
+
+
+.seguro-moto-cta-box > a:hover {
+    background-color: #ffca00;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .seguro-moto-coberturas-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+
+    .seguro-moto-vantagens-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .seguro-moto-vantagens-conteudo {
+        padding: 45px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET MENOR
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .seguro-moto-hero {
+        min-height: 520px;
+    }
+
+
+    .seguro-moto-hero-container {
+        min-height: 520px;
+    }
+
+
+    .seguro-moto-hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(4, 24, 58, 0.94) 0%,
+                rgba(4, 24, 58, 0.82) 55%,
+                rgba(4, 24, 58, 0.35) 100%
+            );
+    }
+
+
+    .seguro-moto-hero-conteudo {
+        width: 70%;
+    }
+
+
+    .seguro-moto-hero-beneficios {
+        flex-wrap: wrap;
+
+        gap: 15px;
+    }
+
+
+    .seguro-moto-hero-beneficios > div {
+        min-width: 0;
+
+        padding: 0 15px 0 0;
+
+        border-right: none;
+    }
+
+
+    .seguro-moto-coberturas-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .seguro-moto-vantagens-container {
+        grid-template-columns: 1fr;
+    }
+
+
+    .seguro-moto-vantagens-imagem {
+        min-height: 380px;
+    }
+
+
+    .seguro-moto-vantagens-imagem img {
+        min-height: 380px;
+        height: 380px;
+    }
+
+
+    .seguro-moto-cotacao-box {
+        grid-template-columns: 1fr;
+    }
+
+
+    .seguro-moto-cotacao-imagem img {
+        min-height: 0;
+
+        height: 340px;
+    }
+
+
+    .seguro-moto-passos {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    .seguro-moto-faq-lista {
+        grid-template-columns: 1fr;
+    }
+
+
+    .seguro-moto-cta-box {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 560px) {
+
+    .seguro-moto-hero {
+        min-height: 650px;
+    }
+
+
+    .seguro-moto-hero-container {
+        min-height: 650px;
+    }
+
+
+    .seguro-moto-hero-imagem {
+        background-position:
+            62% center;
+    }
+
+
+    .seguro-moto-hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(4, 24, 58, 0.94) 0%,
+                rgba(4, 24, 58, 0.82) 70%,
+                rgba(4, 24, 58, 0.48) 100%
+            );
+    }
+
+
+    .seguro-moto-hero-conteudo {
+        width: 100%;
+
+        padding: 45px 0;
+    }
+
+
+    .seguro-moto-hero h1 {
+        max-width: 350px;
+
+        font-size: 39px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .seguro-moto-hero p {
+        max-width: 340px;
+
+        font-size: 15px;
+    }
+
+
+    .seguro-moto-hero-acoes {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .seguro-moto-btn-principal,
+    .seguro-moto-btn-whatsapp {
+        width: 100%;
+
+        max-width: 280px;
+    }
+
+
+    .seguro-moto-hero-beneficios {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 13px;
+    }
+
+
+    .seguro-moto-coberturas {
+        padding: 50px 0;
+    }
+
+
+    .seguro-moto-coberturas-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .seguro-moto-cobertura-card {
+        min-height: 0;
+    }
+
+
+    .seguro-moto-cabecalho {
+        margin-bottom: 28px;
+    }
+
+
+    .seguro-moto-cabecalho h2 {
+        font-size: 31px;
+    }
+
+
+    .seguro-moto-vantagens-imagem {
+        min-height: 280px;
+    }
+
+
+    .seguro-moto-vantagens-imagem img {
+        height: 280px;
+        min-height: 280px;
+    }
+
+
+    .seguro-moto-vantagens-conteudo {
+        padding: 38px 22px;
+    }
+
+
+    .seguro-moto-vantagens-conteudo h2 {
+        font-size: 32px;
+    }
+
+
+    .seguro-moto-vantagens-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .seguro-moto-cotacao {
+        padding: 50px 0;
+    }
+
+
+    .seguro-moto-cotacao-conteudo {
+        padding: 28px 21px;
+    }
+
+
+    .seguro-moto-cotacao-conteudo h2 {
+        font-size: 32px;
+    }
+
+
+    .seguro-moto-cotacao-imagem img {
+        height: 250px;
+    }
+
+
+    .seguro-moto-faq {
+        padding: 50px 0;
+    }
+
+
+    .seguro-moto-faq-item summary {
+        font-size: 13px;
+    }
+
+
+    .seguro-moto-cta {
+        padding: 20px 0 50px;
+    }
+
+
+    .seguro-moto-cta-box {
+        padding: 30px 22px;
+    }
+
+
+    .seguro-moto-cta-box > a {
+        width: 100%;
+    }
+
+}
