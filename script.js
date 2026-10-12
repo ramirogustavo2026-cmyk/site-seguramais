@@ -196,3 +196,274 @@ if (botaoMenuMobile && menuMobile) {
     });
 
 }
+
+/* =========================================================
+   CARROSSEL - SEGURO AUTO
+========================================================= */
+
+const autoTrilho = document.querySelector(
+    ".seguro-auto-carrossel-trilho"
+);
+
+const autoCards = document.querySelectorAll(
+    ".seguro-auto-carrossel-trilho .seguro-auto-cobertura-card"
+);
+
+const autoBtnEsquerda = document.querySelector(
+    ".seguro-auto-carrossel-esquerda"
+);
+
+const autoBtnDireita = document.querySelector(
+    ".seguro-auto-carrossel-direita"
+);
+
+const autoIndicadores = document.querySelectorAll(
+    ".seguro-auto-carrossel-indicadores span"
+);
+
+const autoCarrossel = document.querySelector(
+    ".seguro-auto-carrossel"
+);
+
+
+let autoIndice = 0;
+
+let autoIntervalo;
+
+
+/* QUANTIDADE VISÍVEL */
+
+function autoQuantidadeVisivel() {
+
+    if (window.innerWidth <= 560) {
+        return 1;
+    }
+
+    if (window.innerWidth <= 950) {
+        return 2;
+    }
+
+    return 4;
+}
+
+
+/* TOTAL DE POSIÇÕES */
+
+function autoTotalPosicoes() {
+
+    return Math.max(
+        0,
+        autoCards.length - autoQuantidadeVisivel()
+    );
+}
+
+
+/* ATUALIZAR CARROSSEL */
+
+function atualizarCarrosselAuto() {
+
+    if (
+        !autoTrilho ||
+        autoCards.length === 0
+    ) {
+        return;
+    }
+
+
+    const quantidadeVisivel =
+        autoQuantidadeVisivel();
+
+    const totalPosicoes =
+        autoTotalPosicoes();
+
+
+    if (autoIndice > totalPosicoes) {
+        autoIndice = 0;
+    }
+
+
+    const gap =
+        window.innerWidth <= 560
+            ? 14
+            : 20;
+
+
+    const larguraJanela =
+        autoTrilho.parentElement.clientWidth;
+
+
+    const larguraCard =
+        (
+            larguraJanela -
+            gap * (quantidadeVisivel - 1)
+        ) / quantidadeVisivel;
+
+
+    const deslocamento =
+        autoIndice *
+        (larguraCard + gap);
+
+
+    autoTrilho.style.transform =
+        `translateX(-${deslocamento}px)`;
+
+
+    atualizarIndicadoresAuto();
+
+}
+
+
+/* INDICADORES */
+
+function atualizarIndicadoresAuto() {
+
+    autoIndicadores.forEach(
+        (indicador, indice) => {
+
+            indicador.classList.toggle(
+                "ativo",
+                indice === autoIndice
+            );
+
+        }
+    );
+
+}
+
+
+/* PRÓXIMO */
+
+function proximoAuto() {
+
+    const totalPosicoes =
+        autoTotalPosicoes();
+
+
+    if (autoIndice >= totalPosicoes) {
+
+        autoIndice = 0;
+
+    } else {
+
+        autoIndice++;
+
+    }
+
+
+    atualizarCarrosselAuto();
+
+}
+
+
+/* ANTERIOR */
+
+function anteriorAuto() {
+
+    const totalPosicoes =
+        autoTotalPosicoes();
+
+
+    if (autoIndice <= 0) {
+
+        autoIndice = totalPosicoes;
+
+    } else {
+
+        autoIndice--;
+
+    }
+
+
+    atualizarCarrosselAuto();
+
+}
+
+
+/* AUTOPLAY */
+
+function iniciarAutoPlay() {
+
+    pararAutoPlay();
+
+
+    autoIntervalo = setInterval(
+        proximoAuto,
+        3500
+    );
+
+}
+
+
+function pararAutoPlay() {
+
+    if (autoIntervalo) {
+
+        clearInterval(autoIntervalo);
+
+    }
+
+}
+
+
+/* EVENTOS */
+
+if (
+    autoTrilho &&
+    autoCards.length > 0 &&
+    autoBtnDireita &&
+    autoBtnEsquerda
+) {
+
+    autoBtnDireita.addEventListener(
+        "click",
+        () => {
+
+            proximoAuto();
+
+            iniciarAutoPlay();
+
+        }
+    );
+
+
+    autoBtnEsquerda.addEventListener(
+        "click",
+        () => {
+
+            anteriorAuto();
+
+            iniciarAutoPlay();
+
+        }
+    );
+
+
+    autoCarrossel.addEventListener(
+        "mouseenter",
+        pararAutoPlay
+    );
+
+
+    autoCarrossel.addEventListener(
+        "mouseleave",
+        iniciarAutoPlay
+    );
+
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            autoIndice = 0;
+
+            atualizarCarrosselAuto();
+
+        }
+    );
+
+
+    atualizarCarrosselAuto();
+
+    iniciarAutoPlay();
+
+}

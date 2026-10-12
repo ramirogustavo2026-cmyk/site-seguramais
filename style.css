@@ -5888,3 +5888,1455 @@ body {
     }
 
 }
+
+/* =========================================================
+   PÁGINA SEGURO AUTO
+========================================================= */
+
+
+/* =========================================================
+   PADRÃO DE ETIQUETA
+========================================================= */
+
+.seguro-auto-etiqueta {
+    margin-bottom: 14px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: #315d91;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+}
+
+
+.seguro-auto-etiqueta > span {
+    width: 38px;
+    height: 3px;
+
+    display: block;
+
+    flex-shrink: 0;
+
+    background-color: #1677ff;
+}
+
+
+.seguro-auto-etiqueta-centro {
+    justify-content: center;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.seguro-auto-hero {
+    position: relative;
+
+    min-height: 460px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background-color: #ffffff;
+}
+
+
+/* FOTO */
+
+.seguro-auto-hero-imagem {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 62%;
+    height: 100%;
+
+    background-image:
+        url("imagens/seguro-auto/banner-seguro-auto.png");
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    background-position: center;
+
+    z-index: 0;
+}
+
+
+/* DEGRADÊ */
+
+.seguro-auto-hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff 0%,
+            #ffffff 36%,
+            rgba(255, 255, 255, 0.97) 43%,
+            rgba(255, 255, 255, 0.82) 50%,
+            rgba(255, 255, 255, 0.42) 60%,
+            rgba(255, 255, 255, 0.10) 72%,
+            rgba(255, 255, 255, 0) 82%
+        );
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* CONTAINER */
+
+.seguro-auto-hero-container {
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 460px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* CONTEÚDO */
+
+.seguro-auto-hero-conteudo {
+    width: 53%;
+
+    padding: 45px 0;
+}
+
+
+.seguro-auto-hero h1 {
+    max-width: 650px;
+
+    color: #071f55;
+
+    font-size: clamp(44px, 5vw, 62px);
+
+    line-height: 1.02;
+
+    letter-spacing: -2px;
+}
+
+
+.seguro-auto-hero h1 strong {
+    color: #1677ff;
+}
+
+
+.seguro-auto-hero p {
+    max-width: 530px;
+
+    margin-top: 18px;
+
+    color: #365d8d;
+
+    font-size: 17px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   BOTÕES HERO
+========================================================= */
+
+.seguro-auto-hero-acoes {
+    margin-top: 25px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+
+.seguro-auto-btn-principal,
+.seguro-auto-btn-whatsapp {
+    min-height: 46px;
+
+    padding: 0 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.seguro-auto-btn-principal {
+    background-color: #0874f9;
+
+    color: #ffffff;
+}
+
+
+.seguro-auto-btn-principal:hover {
+    background-color: #005fd7;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 16px rgba(0, 90, 200, 0.18);
+}
+
+
+.seguro-auto-btn-whatsapp {
+    background-color: #ffd400;
+
+    color: #071f55;
+}
+
+
+.seguro-auto-btn-whatsapp i {
+    color: #159d46;
+
+    font-size: 17px;
+}
+
+
+.seguro-auto-btn-whatsapp:hover {
+    background-color: #ffca00;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   BENEFÍCIOS RÁPIDOS DO HERO
+========================================================= */
+
+.seguro-auto-hero-beneficios {
+    margin-top: 30px;
+
+    padding-top: 20px;
+
+    display: flex;
+    align-items: center;
+
+    border-top: 1px solid #dbe8f5;
+}
+
+
+.seguro-auto-hero-beneficios > div {
+    min-width: 145px;
+
+    padding: 0 17px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    border-right: 1px solid #dbe8f5;
+}
+
+
+.seguro-auto-hero-beneficios > div:first-child {
+    padding-left: 0;
+}
+
+
+.seguro-auto-hero-beneficios > div:last-child {
+    border-right: none;
+}
+
+
+.seguro-auto-hero-beneficios i {
+    color: #1677ff;
+
+    font-size: 22px;
+}
+
+
+.seguro-auto-hero-beneficios span {
+    color: #5276a4;
+
+    font-size: 11px;
+
+    line-height: 1.35;
+}
+
+
+.seguro-auto-hero-beneficios strong {
+    color: #071f55;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   CABEÇALHOS
+========================================================= */
+
+.seguro-auto-cabecalho {
+    max-width: 760px;
+
+    margin: 0 auto 35px;
+
+    text-align: center;
+}
+
+
+.seguro-auto-cabecalho h2 {
+    color: #071f55;
+
+    font-size: clamp(33px, 4vw, 45px);
+
+    line-height: 1.07;
+
+    letter-spacing: -1px;
+}
+
+
+.seguro-auto-cabecalho h2 strong {
+    color: #1677ff;
+}
+
+
+.seguro-auto-cabecalho > p {
+    max-width: 620px;
+
+    margin: 12px auto 0;
+
+    color: #5276a4;
+
+    font-size: 15px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   COBERTURAS
+========================================================= */
+
+.seguro-auto-coberturas {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 65px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f5faff 100%
+        );
+}
+
+
+.seguro-auto-coberturas::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    left: -220px;
+    top: -200px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(22, 119, 255, 0.04);
+
+    pointer-events: none;
+}
+
+
+
+/* =========================================================
+   CARROSSEL DE COBERTURAS - SEGURO AUTO
+========================================================= */
+
+.seguro-auto-carrossel {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+}
+
+
+.seguro-auto-carrossel-janela {
+    width: 100%;
+
+    overflow: hidden;
+
+    padding: 8px 2px 15px;
+}
+
+
+.seguro-auto-carrossel-trilho {
+    display: flex;
+
+    gap: 20px;
+
+    transition: transform 0.55s ease;
+}
+
+
+.seguro-auto-carrossel-trilho
+.seguro-auto-cobertura-card {
+    flex:
+        0 0
+        calc(
+            (100% - 60px) / 4
+        );
+
+    min-width: 0;
+}
+
+
+/* SETAS */
+
+.seguro-auto-carrossel-seta {
+    position: relative;
+
+    z-index: 3;
+
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background-color: #ffffff;
+
+    color: #0874f9;
+
+    box-shadow:
+        0 5px 18px rgba(20, 80, 150, 0.15);
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.seguro-auto-carrossel-seta:hover {
+    background-color: #0874f9;
+
+    color: #ffffff;
+
+    transform: scale(1.05);
+}
+
+
+/* INDICADORES */
+
+.seguro-auto-carrossel-indicadores {
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+}
+
+
+.seguro-auto-carrossel-indicadores span {
+    width: 7px;
+    height: 7px;
+
+    display: block;
+
+    border-radius: 50%;
+
+    background-color: #cbdbea;
+
+    transition:
+        width 0.25s ease,
+        background-color 0.25s ease;
+}
+
+
+.seguro-auto-carrossel-indicadores span.ativo {
+    width: 22px;
+
+    border-radius: 20px;
+
+    background-color: #0874f9;
+}
+
+.seguro-auto-cobertura-card {
+    min-height: 220px;
+
+    padding: 27px 23px;
+
+    background-color: #ffffff;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 6px 22px rgba(20, 80, 150, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.seguro-auto-cobertura-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 11px 28px rgba(20, 80, 150, 0.13);
+}
+
+
+.seguro-auto-cobertura-icone {
+    width: 55px;
+    height: 55px;
+
+    margin-bottom: 19px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #eaf4ff;
+
+    color: #1677ff;
+
+    font-size: 23px;
+}
+
+
+.seguro-auto-cobertura-card h3 {
+    color: #071f55;
+
+    font-size: 18px;
+}
+
+
+.seguro-auto-cobertura-card p {
+    margin-top: 9px;
+
+    color: #5276a4;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   POR QUE CONTRATAR
+========================================================= */
+
+.seguro-auto-vantagens {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 65px 0;
+
+    background-color: #ffffff;
+}
+
+
+.seguro-auto-vantagens-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 19px;
+}
+
+
+.seguro-auto-vantagem {
+    padding: 23px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f7fbff 100%
+        );
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 5px 20px rgba(20, 80, 150, 0.07);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.seguro-auto-vantagem:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 9px 25px rgba(20, 80, 150, 0.11);
+}
+
+
+.seguro-auto-vantagem-icone {
+    min-width: 57px;
+    height: 57px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #eaf4ff;
+
+    color: #1677ff;
+
+    font-size: 24px;
+}
+
+
+.seguro-auto-vantagem h3 {
+    color: #071f55;
+
+    font-size: 17px;
+}
+
+
+.seguro-auto-vantagem p {
+    margin-top: 6px;
+
+    color: #5276a4;
+
+    font-size: 13px;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   COTAÇÃO
+========================================================= */
+
+.seguro-auto-cotacao {
+    padding: 20px 0 65px;
+
+    background-color: #ffffff;
+}
+
+
+.seguro-auto-cotacao-box {
+    overflow: hidden;
+
+    min-height: 380px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 0.82fr;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef7ff 0%,
+            #e3f1ff 100%
+        );
+
+    box-shadow:
+        0 8px 28px rgba(20, 80, 150, 0.09);
+}
+
+
+/* CONTEÚDO */
+
+.seguro-auto-cotacao-conteudo {
+    padding: 42px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+.seguro-auto-cotacao-conteudo h2 {
+    max-width: 570px;
+
+    color: #071f55;
+
+    font-size: clamp(34px, 4vw, 47px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1px;
+}
+
+
+.seguro-auto-cotacao-conteudo h2 strong {
+    color: #1677ff;
+}
+
+
+.seguro-auto-cotacao-conteudo > p {
+    max-width: 550px;
+
+    margin-top: 13px;
+
+    color: #5276a4;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   PASSOS DA COTAÇÃO
+========================================================= */
+
+.seguro-auto-passos {
+    margin-top: 26px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 14px;
+}
+
+
+.seguro-auto-passo {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.seguro-auto-passo strong {
+    min-width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #1677ff;
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+.seguro-auto-passo span {
+    color: #173e72;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+}
+
+
+/* BOTÃO */
+
+.seguro-auto-cotacao-botao {
+    width: fit-content;
+
+    min-height: 45px;
+
+    margin-top: 25px;
+
+    padding: 0 19px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    background-color: #0874f9;
+
+    color: #ffffff;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+
+.seguro-auto-cotacao-botao:hover {
+    background-color: #005fd7;
+
+    transform: translateY(-2px);
+}
+
+
+/* FOTO MOTORISTA */
+
+.seguro-auto-cotacao-imagem {
+    overflow: hidden;
+}
+
+
+.seguro-auto-cotacao-imagem img {
+    width: 100%;
+    height: 100%;
+
+    min-height: 380px;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.seguro-auto-cotacao-box:hover
+.seguro-auto-cotacao-imagem img {
+    transform: scale(1.02);
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.seguro-auto-faq {
+    padding: 65px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8fbff 0%,
+            #eef7ff 100%
+        );
+}
+
+
+.seguro-auto-faq-lista {
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.seguro-auto-faq-item {
+    overflow: hidden;
+
+    background-color: #ffffff;
+
+    border-radius: 11px;
+
+    box-shadow:
+        0 4px 16px rgba(20, 80, 150, 0.06);
+}
+
+
+.seguro-auto-faq-item summary {
+    min-height: 60px;
+
+    padding: 15px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    list-style: none;
+
+    color: #071f55;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.seguro-auto-faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+
+.seguro-auto-faq-item summary i {
+    color: #1677ff;
+
+    font-size: 14px;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.seguro-auto-faq-item[open] summary i {
+    transform: rotate(45deg);
+}
+
+
+.seguro-auto-faq-item p {
+    padding:
+        0 20px 20px;
+
+    color: #5276a4;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   CTA FINAL
+========================================================= */
+
+.seguro-auto-cta {
+    padding: 25px 0 70px;
+
+    background-color: #ffffff;
+}
+
+
+.seguro-auto-cta-box {
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 180px;
+
+    padding: 35px 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 35px;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #05275b 0%,
+            #064293 100%
+        );
+}
+
+
+.seguro-auto-cta-box::after {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    right: -100px;
+    bottom: -180px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(22, 119, 255, 0.15);
+
+    pointer-events: none;
+}
+
+
+.seguro-auto-cta-box > div {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+.seguro-auto-cta-etiqueta {
+    margin-bottom: 10px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    color: #c9dcf4;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.seguro-auto-cta-etiqueta span {
+    width: 36px;
+    height: 2px;
+
+    display: block;
+
+    background-color: #35a4ff;
+}
+
+
+.seguro-auto-cta h2 {
+    color: #ffffff;
+
+    font-size: clamp(30px, 4vw, 42px);
+
+    line-height: 1.05;
+}
+
+
+.seguro-auto-cta h2 strong {
+    color: #35a4ff;
+}
+
+
+.seguro-auto-cta p {
+    max-width: 610px;
+
+    margin-top: 9px;
+
+    color: #d5e5f8;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+.seguro-auto-cta-box > a {
+    position: relative;
+
+    z-index: 1;
+
+    flex-shrink: 0;
+
+    min-height: 47px;
+
+    padding: 0 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    background-color: #ffd400;
+
+    color: #071f55;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    transition: 0.2s;
+}
+
+
+.seguro-auto-cta-box > a i {
+    color: #159d46;
+
+    font-size: 17px;
+}
+
+
+.seguro-auto-cta-box > a:hover {
+    background-color: #ffca00;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+
+
+/* TABLET */
+
+@media (max-width: 950px) {
+
+    .seguro-auto-hero-imagem {
+        width: 70%;
+    }
+
+
+    .seguro-auto-hero-conteudo {
+        width: 62%;
+    }
+.seguro-auto-cotacao-box {
+        grid-template-columns: 1fr;
+    }
+
+
+    .seguro-auto-cotacao-imagem img {
+        height: 340px;
+
+        min-height: 0;
+    }
+
+
+    .seguro-auto-cta-box {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+}
+
+
+/* TABLET MENOR */
+
+@media (max-width: 750px) {
+
+    .seguro-auto-hero {
+        min-height: 500px;
+    }
+
+
+    .seguro-auto-hero-container {
+        min-height: 500px;
+    }
+
+
+    .seguro-auto-hero-imagem {
+        width: 100%;
+
+        opacity: 0.70;
+
+        background-position: 70% center;
+    }
+
+
+    .seguro-auto-hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.94) 0%,
+                rgba(255, 255, 255, 0.84) 55%,
+                rgba(255, 255, 255, 0.38) 100%
+            );
+    }
+
+
+    .seguro-auto-hero-conteudo {
+        width: 72%;
+    }
+
+
+    .seguro-auto-hero-beneficios {
+        flex-wrap: wrap;
+
+        gap: 15px;
+    }
+
+
+    .seguro-auto-hero-beneficios > div {
+        min-width: 0;
+
+        padding: 0 15px 0 0;
+
+        border-right: none;
+    }
+
+
+    .seguro-auto-vantagens-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .seguro-auto-passos {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+}
+
+
+/* CELULAR */
+
+@media (max-width: 560px) {
+
+    .seguro-auto-hero {
+        min-height: 570px;
+    }
+
+
+    .seguro-auto-hero-container {
+        min-height: 570px;
+    }
+
+
+    .seguro-auto-hero-imagem {
+        width: 100%;
+
+        opacity: 0.60;
+
+        background-position: 72% center;
+    }
+
+
+    .seguro-auto-hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.93) 0%,
+                rgba(255, 255, 255, 0.79) 65%,
+                rgba(255, 255, 255, 0.40) 100%
+            );
+    }
+
+
+    .seguro-auto-hero-conteudo {
+        width: 100%;
+
+        padding: 45px 0;
+    }
+
+
+    .seguro-auto-hero h1 {
+        max-width: 340px;
+
+        font-size: 39px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .seguro-auto-hero p {
+        max-width: 330px;
+
+        font-size: 15px;
+    }
+
+
+    .seguro-auto-hero-acoes {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .seguro-auto-btn-principal,
+    .seguro-auto-btn-whatsapp {
+        width: 100%;
+
+        max-width: 270px;
+    }
+
+
+    .seguro-auto-hero-beneficios {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 13px;
+    }
+
+
+    .seguro-auto-coberturas {
+        padding: 50px 0;
+    }
+.seguro-auto-cobertura-card {
+        min-height: 0;
+    }
+
+
+    .seguro-auto-cabecalho {
+        margin-bottom: 28px;
+    }
+
+
+    .seguro-auto-cabecalho h2 {
+        font-size: 31px;
+    }
+
+
+    .seguro-auto-vantagens {
+        padding: 50px 0;
+    }
+
+
+    .seguro-auto-vantagem {
+        align-items: flex-start;
+
+        padding: 20px;
+    }
+
+
+    .seguro-auto-cotacao {
+        padding: 10px 0 50px;
+    }
+
+
+    .seguro-auto-cotacao-conteudo {
+        padding: 27px 21px;
+    }
+
+
+    .seguro-auto-cotacao-conteudo h2 {
+        font-size: 32px;
+    }
+
+
+    .seguro-auto-cotacao-imagem img {
+        height: 250px;
+    }
+
+
+    .seguro-auto-cotacao-botao {
+        width: 100%;
+    }
+
+
+    .seguro-auto-faq {
+        padding: 50px 0;
+    }
+
+
+    .seguro-auto-faq-item summary {
+        font-size: 13px;
+    }
+
+
+    .seguro-auto-cta {
+        padding: 20px 0 50px;
+    }
+
+
+    .seguro-auto-cta-box {
+        padding: 30px 22px;
+    }
+
+
+    .seguro-auto-cta-box > a {
+        width: 100%;
+    }
+
+}
+
+/* =========================================================
+   RESPONSIVIDADE - CARROSSEL SEGURO AUTO
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .seguro-auto-carrossel-trilho
+    .seguro-auto-cobertura-card {
+        flex:
+            0 0
+            calc(
+                (100% - 20px) / 2
+            );
+    }
+
+}
+
+
+@media (max-width: 560px) {
+
+    .seguro-auto-carrossel {
+        gap: 8px;
+    }
+
+
+    .seguro-auto-carrossel-seta {
+        width: 36px;
+        height: 36px;
+
+        font-size: 13px;
+    }
+
+
+    .seguro-auto-carrossel-trilho {
+        gap: 14px;
+    }
+
+
+    .seguro-auto-carrossel-trilho
+    .seguro-auto-cobertura-card {
+        flex: 0 0 100%;
+    }
+
+}
