@@ -1759,7 +1759,7 @@ function carregarModelos(
 
         });
     }
-    
+
         /* =========================================================
    ENVIO DA COTAÇÃO - SEGURO AUTO
 ========================================================= */
@@ -2564,6 +2564,23 @@ document.addEventListener(
         carregarProfissoes();
         carregarMarcasFIPE();
 
+    const parametrosURL =
+    new URLSearchParams(
+        window.location.search
+        );
+
+    const abrirCotacao =
+        parametrosURL.get("cotacao");
+
+
+    if (
+        abrirCotacao === "auto" &&
+        document.getElementById("modal-overlay")
+    ) {
+
+        abrirModal("Auto");
+
+    }
     }
     
 );
