@@ -473,6 +473,7 @@ if (
 ========================================================= */
 
 let etapaCotacaoAuto = 1;
+let cepValidado = false;
 
 
 /* =========================================================
@@ -563,6 +564,7 @@ function fecharModal() {
 
 
     etapaCotacaoAuto = 1;
+    limparErros();
 
 
     /* Outra pessoa */
@@ -679,6 +681,11 @@ function mostrarEtapaCotacaoAuto() {
 
 function proximaEtapa() {
 
+    if (!validarEtapaCotacaoAuto()) {
+        return;
+    }
+
+
     if (etapaCotacaoAuto < 5) {
 
         etapaCotacaoAuto++;
@@ -783,3 +790,1780 @@ function selecionarTipoCondutor(
     }
 
 }
+
+/* =========================================================
+   VALIDAÇÃO DO FORMULÁRIO - SEGURO AUTO
+========================================================= */
+
+function mostrarErroCampo(
+    campo,
+    mensagem = "Por favor, preencha este campo."
+) {
+
+    campo.classList.add("erro");
+
+
+    const inputGroup =
+        campo.closest(".input-group");
+
+
+    if (!inputGroup) {
+        return;
+    }
+
+
+    let mensagemErro =
+        inputGroup.querySelector(
+            ".erro-mensagem"
+        );
+
+
+    if (!mensagemErro) {
+
+        mensagemErro =
+            document.createElement("span");
+
+
+        mensagemErro.className =
+            "erro-mensagem";
+
+
+        inputGroup.appendChild(
+            mensagemErro
+        );
+
+    }
+
+
+    mensagemErro.textContent =
+        mensagem;
+
+}
+
+
+/* =========================================================
+   LIMPAR ERRO DE UM CAMPO
+========================================================= */
+
+function limparErroCampo(campo) {
+
+    campo.classList.remove("erro");
+
+
+    const inputGroup =
+        campo.closest(".input-group");
+
+
+    if (!inputGroup) {
+        return;
+    }
+
+
+    const mensagemErro =
+        inputGroup.querySelector(
+            ".erro-mensagem"
+        );
+
+
+    if (mensagemErro) {
+        mensagemErro.remove();
+    }
+
+}
+
+
+/* =========================================================
+   LIMPAR TODOS OS ERROS
+========================================================= */
+
+function limparErros() {
+
+    document
+        .querySelectorAll(
+            "#form-cotacao .erro"
+        )
+        .forEach(campo => {
+
+            campo.classList.remove("erro");
+
+        });
+
+
+    document
+        .querySelectorAll(
+            "#form-cotacao .erro-mensagem"
+        )
+        .forEach(mensagem => {
+
+            mensagem.remove();
+
+        });
+
+}
+
+
+/* =========================================================
+   VALIDAR ETAPA ATUAL
+========================================================= */
+
+function validarEtapaCotacaoAuto() {
+
+    let etapa;
+
+
+    if (
+        etapaCotacaoAuto === 1 ||
+        etapaCotacaoAuto === 2
+    ) {
+
+        etapa =
+            document.getElementById(
+                `step-${etapaCotacaoAuto}`
+            );
+
+    } else {
+
+        etapa =
+            document.getElementById(
+                `step-${etapaCotacaoAuto}-auto`
+            );
+
+    }
+
+
+    if (!etapa) {
+        return true;
+    }
+
+
+    const campos =
+        etapa.querySelectorAll(
+            "input, select, textarea"
+        );
+
+
+    let valido = true;
+
+
+    campos.forEach(campo => {
+
+        /* ignora campos escondidos ou desabilitados */
+
+        if (
+            campo.disabled ||
+            campo.offsetWidth === 0 ||
+            campo.offsetHeight === 0
+        ) {
+            return;
+        }
+
+
+        const valor =
+            campo.value.trim();
+
+
+        /* CAMPO OBRIGATÓRIO */
+
+        if (
+            campo.required &&
+            !valor
+        ) {
+
+            mostrarErroCampo(
+                campo,
+                "Por favor, preencha este campo."
+            );
+
+            valido = false;
+
+            return;
+        }
+
+
+        /* se não é obrigatório e está vazio */
+
+        if (!valor) {
+
+            limparErroCampo(campo);
+
+            return;
+        }
+
+
+        /* TELEFONE */
+
+        if (
+            campo.id === "telefone" &&
+            !validarTelefone(valor)
+        ) {
+
+            mostrarErroCampo(
+                campo,
+                "Informe um telefone válido com DDD."
+            );
+
+            valido = false;
+
+            return;
+        }
+
+
+        /* E-MAIL */
+
+        if (
+            campo.id === "email" &&
+            !validarEmail(valor)
+        ) {
+
+            mostrarErroCampo(
+                campo,
+                "Informe um e-mail válido."
+            );
+
+            valido = false;
+
+            return;
+        }
+
+
+        /* CPF DA OUTRA PESSOA */
+
+        if (
+            campo.id === "outra-cpf" &&
+            !validarCPF(valor)
+        ) {
+
+            mostrarErroCampo(
+                campo,
+                "Informe um CPF válido."
+            );
+
+            valido = false;
+
+            return;
+        }
+
+
+        limparErroCampo(campo);
+
+    });
+
+
+    /* coloca o cursor no primeiro erro */
+
+    if (!valido) {
+
+        const primeiroErro =
+            etapa.querySelector(".erro");
+
+
+        if (primeiroErro) {
+            primeiroErro.focus();
+        }
+
+    }
+
+
+    return valido;
+
+}
+
+
+/* =========================================================
+   MÁSCARA DE TELEFONE
+========================================================= */
+
+function mascaraTelefone(valor) {
+
+    valor =
+        valor.replace(/\D/g, "");
+
+
+    valor =
+        valor.slice(0, 11);
+
+
+    if (valor.length <= 10) {
+
+        valor = valor.replace(
+            /^(\d{2})(\d)/g,
+            "($1) $2"
+        );
+
+
+        valor = valor.replace(
+            /(\d{4})(\d)/,
+            "$1-$2"
+        );
+
+    } else {
+
+        valor = valor.replace(
+            /^(\d{2})(\d)/g,
+            "($1) $2"
+        );
+
+
+        valor = valor.replace(
+            /(\d{5})(\d)/,
+            "$1-$2"
+        );
+
+    }
+
+
+    return valor;
+
+}
+
+
+/* =========================================================
+   VALIDAR TELEFONE
+========================================================= */
+
+function validarTelefone(telefone) {
+
+    const numeros =
+        telefone.replace(/\D/g, "");
+
+
+    if (
+        numeros.length !== 10 &&
+        numeros.length !== 11
+    ) {
+        return false;
+    }
+
+
+    /* bloqueia números repetidos */
+
+    if (/^(\d)\1+$/.test(numeros)) {
+        return false;
+    }
+
+
+    const dddsValidos =
+        new Set([
+
+            "11","12","13","14","15","16","17","18","19",
+
+            "21","22","24","27","28",
+
+            "31","32","33","34","35","37","38",
+
+            "41","42","43","44","45","46","47","48","49",
+
+            "51","53","54","55",
+
+            "61","62","63","64","65","66","67","68","69",
+
+            "71","73","74","75","77","79",
+
+            "81","82","83","84","85","86","87","88","89",
+
+            "91","92","93","94","95","96","97","98","99"
+
+        ]);
+
+
+    const ddd =
+        numeros.slice(0, 2);
+
+
+    if (!dddsValidos.has(ddd)) {
+        return false;
+    }
+
+
+    if (
+        numeros.length === 11 &&
+        numeros[2] !== "9"
+    ) {
+        return false;
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================================================
+   VALIDAR E-MAIL
+========================================================= */
+
+function validarEmail(email) {
+
+    const valor =
+        email.trim().toLowerCase();
+
+
+    const regex =
+        /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
+
+
+    return regex.test(valor);
+
+}
+
+
+/* =========================================================
+   MÁSCARA CPF
+========================================================= */
+
+function mascaraCPF(valor) {
+
+    valor =
+        valor.replace(/\D/g, "");
+
+
+    valor =
+        valor.slice(0, 11);
+
+
+    valor =
+        valor.replace(
+            /(\d{3})(\d)/,
+            "$1.$2"
+        );
+
+
+    valor =
+        valor.replace(
+            /(\d{3})(\d)/,
+            "$1.$2"
+        );
+
+
+    valor =
+        valor.replace(
+            /(\d{3})(\d{1,2})$/,
+            "$1-$2"
+        );
+
+
+    return valor;
+
+}
+
+
+/* =========================================================
+   VALIDAR CPF
+========================================================= */
+
+function validarCPF(cpf) {
+
+    cpf =
+        cpf.replace(/\D/g, "");
+
+
+    if (cpf.length !== 11) {
+        return false;
+    }
+
+
+    if (/^(\d)\1{10}$/.test(cpf)) {
+        return false;
+    }
+
+
+    let soma = 0;
+
+
+    for (let i = 0; i < 9; i++) {
+
+        soma +=
+            Number(cpf[i]) *
+            (10 - i);
+
+    }
+
+
+    let primeiroDigito =
+        (soma * 10) % 11;
+
+
+    if (primeiroDigito === 10) {
+        primeiroDigito = 0;
+    }
+
+
+    if (
+        primeiroDigito !==
+        Number(cpf[9])
+    ) {
+        return false;
+    }
+
+
+    soma = 0;
+
+
+    for (let i = 0; i < 10; i++) {
+
+        soma +=
+            Number(cpf[i]) *
+            (11 - i);
+
+    }
+
+
+    let segundoDigito =
+        (soma * 10) % 11;
+
+
+    if (segundoDigito === 10) {
+        segundoDigito = 0;
+    }
+
+
+    return (
+        segundoDigito ===
+        Number(cpf[10])
+    );
+
+}
+
+const profissoesPreFixadas = [
+    "Administrador",
+    "Advogado",
+    "Analista de Sistemas / TI",
+    "Aposentado / Pensionista",
+    "Arquiteto",
+    "Assistente Social",
+    "Autônomo",
+    "Bancário",
+    "Biólogo",
+    "Caminhoneiro / Motorista de Carga",
+    "Comerciante / Empresário",
+    "Contador / Auditor",
+    "Corretor de Imóveis",
+    "Corretor de Seguros",
+    "Dentista",
+    "Dermatologista",
+    "Designer / Publicitário",
+    "Economista",
+    "Educador Físico / Personal Trainer",
+    "Empresário",
+    "Enfermeiro",
+    "Engenheiro",
+    "Estudante",
+    "Farmacêutico",
+    "Fisioterapeuta",
+    "Funcionário Público",
+    "Jornalista / Comunicador",
+    "Médico",
+    "Motorista / Entregador",
+    "Nutricionista",
+    "Professor / Educador",
+    "Psicólogo",
+    "Técnico em Enfermagem",
+    "Técnico em Informática",
+    "Veterinário",
+    "Outras Atividades"
+];
+
+
+function carregarProfissoes() {
+
+    const selectProfissao =
+        document.getElementById(
+            "profissao-condutor"
+        );
+
+
+    if (!selectProfissao) {
+        return;
+    }
+
+
+    selectProfissao.innerHTML =
+        '<option value="">Selecione a profissão...</option>';
+
+
+    [...profissoesPreFixadas]
+        .sort((a, b) =>
+            a.localeCompare(
+                b,
+                "pt-BR"
+            )
+        )
+        .forEach(profissao => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                profissao;
+
+
+            option.textContent =
+                profissao;
+
+
+            selectProfissao.appendChild(
+                option
+            );
+
+        });
+
+}
+
+/* =========================================================
+   CEP - SEGURO AUTO
+========================================================= */
+
+function mascaraCEP(valor) {
+
+    valor = valor.replace(/\D/g, "");
+
+    valor = valor.slice(0, 8);
+
+    valor = valor.replace(
+        /^(\d{5})(\d)/,
+        "$1-$2"
+    );
+
+    return valor;
+}
+
+
+function buscarCEP() {
+
+    const cepInput =
+        document.getElementById("cep");
+
+
+    if (!cepInput) {
+        return;
+    }
+
+
+    const cep =
+        cepInput.value.replace(/\D/g, "");
+
+
+    cepValidado = false;
+
+
+    if (cep.length !== 8) {
+        return;
+    }
+
+
+    fetch(
+        `https://viacep.com.br/ws/${cep}/json/`
+    )
+
+        .then(resposta =>
+            resposta.json()
+        )
+
+        .then(data => {
+
+            if (data.erro) {
+
+                cepValidado = false;
+
+                mostrarErroCampo(
+                    cepInput,
+                    "CEP não encontrado."
+                );
+
+                return;
+            }
+
+
+            cepValidado = true;
+
+
+            const logradouro =
+                document.getElementById(
+                    "logradouro"
+                );
+
+            const bairro =
+                document.getElementById(
+                    "bairro"
+                );
+
+            const cidade =
+                document.getElementById(
+                    "cidade"
+                );
+
+            const uf =
+                document.getElementById(
+                    "uf"
+                );
+
+
+            if (logradouro) {
+
+                logradouro.value =
+                    data.logradouro || "";
+
+                limparErroCampo(
+                    logradouro
+                );
+
+            }
+
+
+            if (bairro) {
+
+                bairro.value =
+                    data.bairro || "";
+
+                limparErroCampo(
+                    bairro
+                );
+
+            }
+
+
+            if (cidade) {
+
+                cidade.value =
+                    data.localidade || "";
+
+                limparErroCampo(
+                    cidade
+                );
+
+            }
+
+
+            if (uf && data.uf) {
+
+                uf.value =
+                    data.uf.toUpperCase();
+
+                limparErroCampo(uf);
+
+            }
+
+
+            limparErroCampo(
+                cepInput
+            );
+
+
+            const numero =
+                document.getElementById(
+                    "numero"
+                );
+
+
+            if (numero) {
+                numero.focus();
+            }
+
+        })
+
+        .catch(erro => {
+
+            cepValidado = false;
+
+
+            console.error(
+                "Erro ao buscar CEP:",
+                erro
+            );
+
+
+            mostrarErroCampo(
+                cepInput,
+                "Erro ao buscar CEP."
+            );
+
+        });
+
+}
+
+
+/* =========================================================
+   FIPE - MARCAS
+========================================================= */
+
+function carregarMarcasFIPE() {
+
+    const selectMarca =
+        document.getElementById("marca");
+
+
+    if (!selectMarca) {
+        return;
+    }
+
+
+    selectMarca.innerHTML =
+        '<option value="">Carregando marcas...</option>';
+
+
+    fetch(
+        "https://parallelum.com.br/fipe/api/v1/carros/marcas"
+    )
+
+        .then(resposta =>
+            resposta.json()
+        )
+
+        .then(marcas => {
+
+            selectMarca.innerHTML =
+                '<option value="">Selecione a marca...</option>';
+
+
+            marcas.forEach(marca => {
+
+                const option =
+                    document.createElement(
+                        "option"
+                    );
+
+
+                option.value =
+                    marca.codigo;
+
+
+                option.textContent =
+                    marca.nome;
+
+
+                selectMarca.appendChild(
+                    option
+                );
+
+            });
+
+        })
+
+        .catch(erro => {
+
+            console.error(
+                "Erro ao carregar marcas FIPE:",
+                erro
+            );
+
+
+            selectMarca.innerHTML =
+                '<option value="">Erro ao carregar marcas</option>';
+
+        });
+
+}
+
+
+/* =========================================================
+   FIPE - MODELOS
+========================================================= */
+
+function carregarModelos(
+    codigoMarca
+) {
+
+    const selectModelo =
+        document.getElementById(
+            "modelo"
+        );
+
+
+    if (!selectModelo) {
+        return;
+    }
+
+
+    if (!codigoMarca) {
+
+        selectModelo.disabled = true;
+
+
+        selectModelo.innerHTML =
+            '<option value="">Selecione primeiro a marca...</option>';
+
+
+        return;
+
+    }
+
+
+    selectModelo.disabled = true;
+
+
+    selectModelo.innerHTML =
+        '<option value="">Carregando modelos...</option>';
+
+
+    fetch(
+        `https://parallelum.com.br/fipe/api/v1/carros/marcas/${codigoMarca}/modelos`
+    )
+
+        .then(resposta =>
+            resposta.json()
+        )
+
+        .then(data => {
+
+            selectModelo.innerHTML =
+                '<option value="">Selecione o modelo...</option>';
+
+
+            data.modelos.forEach(
+                modelo => {
+
+                    const option =
+                        document.createElement(
+                            "option"
+                        );
+
+
+                    option.value =
+                        modelo.nome;
+
+
+                    option.textContent =
+                        modelo.nome;
+
+
+                    selectModelo.appendChild(
+                        option
+                    );
+
+                }
+            );
+
+
+            selectModelo.disabled =
+                false;
+
+        })
+
+        .catch(erro => {
+
+            console.error(
+                "Erro ao carregar modelos FIPE:",
+                erro
+            );
+
+
+            selectModelo.innerHTML =
+                '<option value="">Erro ao carregar modelos</option>';
+
+
+            selectModelo.disabled =
+                true;
+
+        });
+    }
+    
+        /* =========================================================
+   ENVIO DA COTAÇÃO - SEGURO AUTO
+========================================================= */
+
+const TEMPO_ENTRE_ENVIOS_AUTO = 60000;
+
+
+/* =========================================================
+   ENVIAR FORMULÁRIO
+========================================================= */
+
+function enviarFormulario() {
+
+    /* valida a etapa 5 antes de enviar */
+
+    if (!validarEtapaCotacaoAuto()) {
+        return;
+    }
+
+
+    /* =====================================================
+       HONEYPOT ANTI-SPAM
+    ====================================================== */
+
+    const campoHoneypot =
+        document.getElementById(
+            "site-contato"
+        );
+
+
+    if (
+        campoHoneypot &&
+        campoHoneypot.value.trim() !== ""
+    ) {
+
+        console.warn(
+            "Envio bloqueado pelo honeypot."
+        );
+
+        return;
+    }
+
+
+    /* =====================================================
+       LIMITE ENTRE ENVIOS
+    ====================================================== */
+
+    const ultimoEnvio =
+        Number(
+            localStorage.getItem(
+                "ultimoEnvioCotacaoAuto"
+            )
+        ) || 0;
+
+
+    const agora =
+        Date.now();
+
+
+    if (
+        agora - ultimoEnvio <
+        TEMPO_ENTRE_ENVIOS_AUTO
+    ) {
+
+        const segundosRestantes =
+            Math.ceil(
+                (
+                    TEMPO_ENTRE_ENVIOS_AUTO -
+                    (agora - ultimoEnvio)
+                ) / 1000
+            );
+
+
+        mostrarPopupFeedback(
+
+            "Aguarde um momento",
+
+            `Você poderá enviar uma nova cotação em ${segundosRestantes} segundos.`,
+
+            "aviso"
+
+        );
+
+
+        return;
+    }
+
+
+    /* =====================================================
+       BLOCOS QUE SERÃO ENVIADOS
+    ====================================================== */
+
+    const etapaCliente =
+        document.getElementById(
+            "step-1"
+        );
+
+
+    const etapaEndereco =
+        document.getElementById(
+            "step-2"
+        );
+
+
+    const fluxoAuto =
+        document.getElementById(
+            "fluxo-auto"
+        );
+
+
+    if (!fluxoAuto) {
+
+        console.error(
+            "Fluxo Auto não encontrado."
+        );
+
+
+        mostrarPopupFeedback(
+
+            "Erro no formulário",
+
+            "Não foi possível identificar o formulário do Seguro Auto.",
+
+            "erro"
+
+        );
+
+
+        return;
+    }
+
+
+    /* =====================================================
+       BOTÃO DE ENVIO
+    ====================================================== */
+
+    const botaoEnviar =
+        document.querySelector(
+            "#step-5-auto .btn-primary"
+        );
+
+
+    let textoOriginalBotao =
+        "ENVIAR COTAÇÃO";
+
+
+    if (botaoEnviar) {
+
+        textoOriginalBotao =
+            botaoEnviar.innerText;
+
+
+        botaoEnviar.disabled =
+            true;
+
+
+        botaoEnviar.innerText =
+            "Enviando...";
+
+
+        botaoEnviar.style.opacity =
+            "0.7";
+
+
+        botaoEnviar.style.cursor =
+            "not-allowed";
+
+    }
+
+
+    /* =====================================================
+       MONTAR RESUMO
+    ====================================================== */
+
+    let dadosResumo =
+        "Nova Cotação de Seguro: AUTO\n\n";
+
+
+    dadosResumo +=
+        "Detalhes do Cliente / Formulário:\n";
+
+
+    function coletarCampos(container) {
+
+        if (!container) {
+            return;
+        }
+
+
+        const campos =
+            container.querySelectorAll(
+                "input, select, textarea"
+            );
+
+
+        campos.forEach(campo => {
+
+            /* ignora tipos desnecessários */
+
+            if (
+                campo.type === "hidden" ||
+                campo.type === "submit" ||
+                campo.type === "button"
+            ) {
+                return;
+            }
+
+
+            /* ignora campos desabilitados */
+
+            if (campo.disabled) {
+                return;
+            }
+
+
+            /* ignora honeypot */
+
+            if (
+                campo.id === "site-contato"
+            ) {
+                return;
+            }
+
+
+            /* radio / checkbox */
+
+            if (
+                campo.type === "radio" ||
+                campo.type === "checkbox"
+            ) {
+
+                if (!campo.checked) {
+                    return;
+                }
+
+            } else {
+
+                if (
+                    !campo.value ||
+                    campo.value.trim() === ""
+                ) {
+                    return;
+                }
+
+            }
+
+
+            /* =================================================
+               IGNORA CAMPOS ESCONDIDOS
+            ================================================== */
+
+            const blocoCondicional =
+                campo.closest(
+                    "#campos-outra-pessoa"
+                );
+
+
+            if (blocoCondicional) {
+
+                const estilo =
+                    window.getComputedStyle(
+                        blocoCondicional
+                    );
+
+
+                if (
+                    estilo.display === "none"
+                ) {
+                    return;
+                }
+
+            }
+
+
+            /* =================================================
+               DESCOBRIR O RÓTULO
+            ================================================== */
+
+            let rotulo =
+                campo.name ||
+                campo.id ||
+                "Campo";
+
+
+            const label =
+                document.querySelector(
+                    `label[for="${campo.id}"]`
+                );
+
+
+            if (label) {
+
+                rotulo =
+                    label.innerText
+                        .replace("*", "")
+                        .replace(":", "")
+                        .trim();
+
+            }
+
+
+            /* =================================================
+               VALOR
+            ================================================== */
+
+            let valorFormatado =
+                campo.value;
+
+
+            if (
+                campo.tagName.toLowerCase() ===
+                "select"
+            ) {
+
+                const opcao =
+                    campo.options[
+                        campo.selectedIndex
+                    ];
+
+
+                if (opcao) {
+
+                    const textoOpcao =
+                        opcao.text.trim();
+
+
+                    if (
+                        textoOpcao &&
+                        !textoOpcao
+                            .toLowerCase()
+                            .includes(
+                                "selecione"
+                            ) &&
+                        !textoOpcao
+                            .toLowerCase()
+                            .includes(
+                                "carregando"
+                            )
+                    ) {
+
+                        valorFormatado =
+                            textoOpcao;
+
+                    }
+
+                }
+
+            }
+
+
+            dadosResumo +=
+                `- ${rotulo}: ${valorFormatado}\n`;
+
+        });
+
+    }
+
+
+    /* =====================================================
+       COLETAR SOMENTE AUTO
+    ====================================================== */
+
+    coletarCampos(
+        etapaCliente
+    );
+
+
+    coletarCampos(
+        etapaEndereco
+    );
+
+
+    coletarCampos(
+        fluxoAuto
+    );
+
+
+    /* =====================================================
+       PARÂMETROS EMAILJS
+    ====================================================== */
+
+    const parametrosEnvio = {
+
+        tipo_seguro:
+            "AUTO",
+
+        mensagem_completa:
+            dadosResumo,
+
+        data_envio:
+            new Date()
+                .toLocaleString(
+                    "pt-BR"
+                )
+
+    };
+
+
+    /* =====================================================
+       ENVIO EMAILJS
+    ====================================================== */
+
+    emailjs
+        .send(
+
+            "service_h6v6mgg",
+
+            "template_d9f3clv",
+
+            parametrosEnvio
+
+        )
+
+        .then(response => {
+
+            console.log(
+                "E-mail enviado com sucesso!",
+                response
+            );
+
+
+            localStorage.setItem(
+
+                "ultimoEnvioCotacaoAuto",
+
+                Date.now()
+
+            );
+
+
+            /* restaura botão */
+
+            if (botaoEnviar) {
+
+                botaoEnviar.disabled =
+                    false;
+
+
+                botaoEnviar.innerText =
+                    textoOriginalBotao;
+
+
+                botaoEnviar.style.opacity =
+                    "1";
+
+
+                botaoEnviar.style.cursor =
+                    "pointer";
+
+            }
+
+
+            /* fecha o formulário */
+
+            fecharModal();
+
+
+            /* popup de sucesso */
+
+            mostrarPopupFeedback(
+
+                "Cotação enviada!",
+
+                "Recebemos suas informações com sucesso. Em breve entraremos em contato.",
+
+                "sucesso"
+
+            );
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Erro ao enviar e-mail:",
+                error
+            );
+
+
+            if (botaoEnviar) {
+
+                botaoEnviar.disabled =
+                    false;
+
+
+                botaoEnviar.innerText =
+                    textoOriginalBotao;
+
+
+                botaoEnviar.style.opacity =
+                    "1";
+
+
+                botaoEnviar.style.cursor =
+                    "pointer";
+
+            }
+
+
+            mostrarPopupFeedback(
+
+                "Não foi possível enviar",
+
+                "Ocorreu um erro ao enviar sua cotação. Por favor, tente novamente.",
+
+                "erro"
+
+            );
+
+        });
+
+}
+
+
+/* =========================================================
+   POPUP DE FEEDBACK
+========================================================= */
+
+function mostrarPopupFeedback(
+    titulo,
+    mensagem,
+    tipo = "sucesso"
+) {
+
+    const overlay =
+        document.getElementById(
+            "popup-feedback-overlay"
+        );
+
+
+    const tituloPopup =
+        document.getElementById(
+            "popup-feedback-title"
+        );
+
+
+    const mensagemPopup =
+        document.getElementById(
+            "popup-feedback-message"
+        );
+
+
+    const iconePopup =
+        document.getElementById(
+            "popup-feedback-icon"
+        );
+
+
+    if (
+        !overlay ||
+        !tituloPopup ||
+        !mensagemPopup ||
+        !iconePopup
+    ) {
+        return;
+    }
+
+
+    overlay.classList.remove(
+        "erro",
+        "aviso"
+    );
+
+
+    if (tipo === "erro") {
+
+        overlay.classList.add(
+            "erro"
+        );
+
+
+        iconePopup.textContent =
+            "×";
+
+    } else if (
+        tipo === "aviso"
+    ) {
+
+        overlay.classList.add(
+            "aviso"
+        );
+
+
+        iconePopup.textContent =
+            "!";
+
+    } else {
+
+        iconePopup.textContent =
+            "✓";
+
+    }
+
+
+    tituloPopup.textContent =
+        titulo;
+
+
+    mensagemPopup.textContent =
+        mensagem;
+
+
+    overlay.classList.add(
+        "show"
+    );
+
+}
+
+
+/* =========================================================
+   FECHAR POPUP
+========================================================= */
+
+function fecharPopupFeedback() {
+
+    const overlay =
+        document.getElementById(
+            "popup-feedback-overlay"
+        );
+
+
+    if (overlay) {
+
+        overlay.classList.remove(
+            "show"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   AVISO DE PRIVACIDADE
+========================================================= */
+
+function abrirAvisoPrivacidade() {
+
+    const overlay =
+        document.getElementById(
+            "privacidade-overlay"
+        );
+
+
+    if (overlay) {
+
+        overlay.classList.add(
+            "show"
+        );
+
+    }
+
+}
+
+
+function fecharAvisoPrivacidade() {
+
+    const overlay =
+        document.getElementById(
+            "privacidade-overlay"
+        );
+
+
+    if (overlay) {
+
+        overlay.classList.remove(
+            "show"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   EVENTOS DOS CAMPOS
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const formulario =
+            document.getElementById(
+                "form-cotacao"
+            );
+
+
+        if (!formulario) {
+            return;
+        }
+
+
+        /* REMOVE ERRO ENQUANTO DIGITA */
+
+        formulario
+            .querySelectorAll(
+                "input, select, textarea"
+            )
+            .forEach(campo => {
+
+                campo.addEventListener(
+                    "input",
+                    () => {
+
+                        limparErroCampo(campo);
+
+                    }
+                );
+
+
+                campo.addEventListener(
+                    "change",
+                    () => {
+
+                        limparErroCampo(campo);
+
+                    }
+                );
+
+            });
+
+
+        /* TELEFONE */
+
+        const telefone =
+            document.getElementById(
+                "telefone"
+            );
+
+
+        if (telefone) {
+
+            telefone.addEventListener(
+                "input",
+                () => {
+
+                    telefone.value =
+                        mascaraTelefone(
+                            telefone.value
+                        );
+
+                }
+            );
+
+        }
+
+
+        /* CPF */
+
+        const cpf =
+            document.getElementById(
+                "outra-cpf"
+            );
+
+
+        if (cpf) {
+
+            cpf.addEventListener(
+                "input",
+                () => {
+
+                    cpf.value =
+                        mascaraCPF(
+                            cpf.value
+                        );
+
+                }
+            );
+
+        }
+
+        const cepInput =
+    document.getElementById(
+        "cep"
+    );
+
+
+    if (cepInput) {
+
+        cepInput.addEventListener(
+            "input",
+            () => {
+
+                cepValidado = false;
+
+                cepInput.value =
+                    mascaraCEP(
+                        cepInput.value
+                    );
+
+            }
+        );
+
+
+        cepInput.addEventListener(
+            "blur",
+            buscarCEP
+        );
+
+    }
+        carregarProfissoes();
+        carregarMarcasFIPE();
+
+    }
+    
+);
