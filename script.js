@@ -4576,3 +4576,24 @@ if (
     }
 
 );
+
+/* =========================================================
+   FECHAR MODAL AO CLICAR FORA
+========================================================= */
+
+const modalOverlay = document.getElementById("modal-overlay");
+
+if (modalOverlay) {
+
+    modalOverlay.addEventListener("click", function (event) {
+
+        // Só fecha se o clique foi realmente no fundo
+        if (event.target === modalOverlay) {
+
+            fecharModal();
+
+        }
+
+    });
+
+}
