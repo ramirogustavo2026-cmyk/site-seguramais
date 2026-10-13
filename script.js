@@ -486,7 +486,9 @@ function abrirModal(servico = "Auto") {
         "Moto",
         "Caminhão",
         "Vida",
-        "Residencial"
+        "Residencial",
+        "Empresarial",
+        "Diversos"
     ];
 
 
@@ -558,6 +560,18 @@ function abrirModal(servico = "Auto") {
         );
 
 
+    const fluxoEmpresarial =
+        document.getElementById(
+            "fluxo-empresarial"
+        );
+
+
+    const fluxoDiversos =
+        document.getElementById(
+            "fluxo-diversos"
+        );
+
+
     if (fluxoAuto) {
         fluxoAuto.style.display = "none";
     }
@@ -580,6 +594,16 @@ function abrirModal(servico = "Auto") {
 
     if (fluxoResidencial) {
         fluxoResidencial.style.display = "none";
+    }
+
+
+    if (fluxoEmpresarial) {
+        fluxoEmpresarial.style.display = "none";
+    }
+
+
+    if (fluxoDiversos) {
+        fluxoDiversos.style.display = "none";
     }
 
 
@@ -707,6 +731,58 @@ function abrirModal(servico = "Auto") {
 
         if (fluxoResidencial) {
             fluxoResidencial.style.display =
+                "block";
+        }
+
+    }
+
+
+    /* =====================================================
+       SEGURO EMPRESARIAL
+    ====================================================== */
+
+    if (servico === "Empresarial") {
+
+        if (headerText) {
+            headerText.textContent =
+                "SEGURO EMPRESARIAL";
+        }
+
+
+        if (headerIcon) {
+            headerIcon.innerHTML =
+                '<i data-lucide="building-2"></i>';
+        }
+
+
+        if (fluxoEmpresarial) {
+            fluxoEmpresarial.style.display =
+                "block";
+        }
+
+    }
+
+
+    /* =====================================================
+       SEGURO DIVERSOS
+    ====================================================== */
+
+    if (servico === "Diversos") {
+
+        if (headerText) {
+            headerText.textContent =
+                "SEGURO DIVERSOS";
+        }
+
+
+        if (headerIcon) {
+            headerIcon.innerHTML =
+                '<i data-lucide="shield"></i>';
+        }
+
+
+        if (fluxoDiversos) {
+            fluxoDiversos.style.display =
                 "block";
         }
 
@@ -889,6 +965,16 @@ function mostrarEtapaCotacaoAuto() {
         }
 
 
+        if (tipoSeguroAtual === "Empresarial") {
+            sufixo = "empresarial";
+        }
+
+
+        if (tipoSeguroAtual === "Diversos") {
+            sufixo = "diversos";
+        }
+
+
         etapa =
             document.getElementById(
                 `step-${etapaCotacaoAuto}-${sufixo}`
@@ -1004,7 +1090,20 @@ function proximaEtapa() {
     }
 
 
-    if (etapaCotacaoAuto < 5) {
+    let maxEtapas = 5;
+
+
+    if (tipoSeguroAtual === "Empresarial") {
+        maxEtapas = 8;
+    }
+
+
+    if (tipoSeguroAtual === "Diversos") {
+        maxEtapas = 3;
+    }
+
+
+    if (etapaCotacaoAuto < maxEtapas) {
 
         etapaCotacaoAuto++;
 
@@ -2128,6 +2227,174 @@ function verificarAdicionaisVida(valor) {
 
 
 /* =========================================================
+   LÓGICA CONDICIONAL - SEGURO EMPRESARIAL
+========================================================= */
+
+function verificarTipoEmpresa(valor) {
+
+    const comercio =
+        document.getElementById("cond-emp-comercio");
+
+    const industria =
+        document.getElementById("cond-emp-industria");
+
+    const escritorio =
+        document.getElementById("cond-emp-escritorio");
+
+    const servicos =
+        document.getElementById("cond-emp-servicos");
+
+    const outro =
+        document.getElementById("cond-emp-outro");
+
+
+    if (comercio) {
+        comercio.style.display =
+            valor === "1" ? "block" : "none";
+    }
+
+
+    if (industria) {
+        industria.style.display =
+            valor === "2" ? "block" : "none";
+    }
+
+
+    if (escritorio) {
+        escritorio.style.display =
+            valor === "3" ? "block" : "none";
+    }
+
+
+    if (servicos) {
+        servicos.style.display =
+            valor === "4" ? "block" : "none";
+    }
+
+
+    if (outro) {
+        outro.style.display =
+            valor === "5" ? "block" : "none";
+    }
+
+}
+
+
+function verificarImovelEmpresa(valor) {
+
+    const alugado =
+        document.getElementById("cond-emp-alugado");
+
+
+    if (alugado) {
+        alugado.style.display =
+            valor === "2" ? "block" : "none";
+    }
+
+}
+
+
+function verificarDesejoProtegerEmp(valor) {
+
+    const campo =
+        document.getElementById("desejo-proteger-emp");
+
+
+    if (campo && valor) {
+        limparErroCampo(campo);
+    }
+
+}
+
+
+function verificarBemAltoValorEmp(valor) {
+
+    const bemValor =
+        document.getElementById("cond-emp-bem-valor");
+
+
+    if (bemValor) {
+        bemValor.style.display =
+            valor === "1" ? "block" : "none";
+    }
+
+}
+
+
+function verificarCoberturasEmpresa(valor) {
+
+    const adicionais =
+        document.getElementById("cond-emp-adicionais");
+
+
+    if (adicionais) {
+        adicionais.style.display =
+            valor === "4" ? "block" : "none";
+    }
+
+}
+
+
+/* =========================================================
+   LÓGICA CONDICIONAL - SEGURO DIVERSOS
+========================================================= */
+
+function verificarProtecaoDiversos(valor) {
+
+    const equipamento =
+        document.getElementById("cond-p1-equipamento");
+
+    const objeto =
+        document.getElementById("cond-p1-objeto");
+
+    const evento =
+        document.getElementById("cond-p1-evento");
+
+    const outro =
+        document.getElementById("cond-p1-outro-diversos");
+
+
+    if (equipamento) {
+        equipamento.style.display =
+            valor === "1" ? "block" : "none";
+    }
+
+
+    if (objeto) {
+        objeto.style.display =
+            valor === "2" ? "block" : "none";
+    }
+
+
+    if (evento) {
+        evento.style.display =
+            valor === "3" ? "block" : "none";
+    }
+
+
+    if (outro) {
+        outro.style.display =
+            valor === "4" ? "block" : "none";
+    }
+
+}
+
+
+function verificarRiscoDiversos(valor) {
+
+    const risco =
+        document.getElementById("cond-p2-especificar-risco");
+
+
+    if (risco) {
+        risco.style.display =
+            valor === "4" ? "block" : "none";
+    }
+
+}
+
+
+/* =========================================================
    VALIDAÇÃO DO FORMULÁRIO - SEGURO AUTO
 ========================================================= */
 
@@ -2274,6 +2541,21 @@ function validarEtapaCotacaoAuto() {
 
         if (tipoSeguroAtual === "Vida") {
             sufixo = "vida";
+        }
+
+
+        if (tipoSeguroAtual === "Residencial") {
+            sufixo = "residencial";
+        }
+
+
+        if (tipoSeguroAtual === "Empresarial") {
+            sufixo = "empresarial";
+        }
+
+
+        if (tipoSeguroAtual === "Diversos") {
+            sufixo = "diversos";
         }
 
 
@@ -3213,6 +3495,28 @@ function enviarFormulario() {
     }
 
 
+    if (tipoSeguroAtual === "Empresarial") {
+
+        tipoSeguro = "EMPRESARIAL";
+        sufixoFluxo = "empresarial";
+
+        chaveUltimoEnvio =
+            "ultimoEnvioCotacaoEmpresarial";
+
+    }
+
+
+    if (tipoSeguroAtual === "Diversos") {
+
+        tipoSeguro = "DIVERSOS";
+        sufixoFluxo = "diversos";
+
+        chaveUltimoEnvio =
+            "ultimoEnvioCotacaoDiversos";
+
+    }
+
+
     /* =====================================================
        LIMITE ENTRE ENVIOS
     ====================================================== */
@@ -3310,10 +3614,26 @@ function enviarFormulario() {
        BOTÃO DE ENVIO
     ====================================================== */
 
-    const botaoEnviar =
-        document.querySelector(
-            `#step-5-${sufixoFluxo} .btn-primary`
-        );
+    let botaoEnviar = null;
+
+
+    fluxoSeguro
+        .querySelectorAll("button, .btn-primary")
+        .forEach(botao => {
+
+            const texto =
+                (botao.innerText || "")
+                    .toUpperCase();
+
+
+            if (
+                texto.includes("ENVIAR") ||
+                texto.includes("COTAÇÃO")
+            ) {
+                botaoEnviar = botao;
+            }
+
+        });
 
 
     let textoOriginalBotao =
@@ -4131,6 +4451,31 @@ document.addEventListener(
         }
 
 
+        /* VALOR DE BEM - SEGURO EMPRESARIAL */
+
+        const valorEquipamentoEmpresarialInput =
+            document.getElementById(
+                "valor-equipamento"
+            );
+
+
+        if (valorEquipamentoEmpresarialInput) {
+
+            valorEquipamentoEmpresarialInput.addEventListener(
+                "input",
+                () => {
+
+                    valorEquipamentoEmpresarialInput.value =
+                        mascaraMoeda(
+                            valorEquipamentoEmpresarialInput.value
+                        );
+
+                }
+            );
+
+        }
+
+
         carregarProfissoes();
         carregarMarcasFIPE();
 
@@ -4202,6 +4547,30 @@ if (
 ) {
 
     abrirModal("Residencial");
+
+}
+
+
+if (
+    abrirCotacao === "empresarial" &&
+    document.getElementById(
+        "modal-overlay"
+    )
+) {
+
+    abrirModal("Empresarial");
+
+}
+
+
+if (
+    abrirCotacao === "diversos" &&
+    document.getElementById(
+        "modal-overlay"
+    )
+) {
+
+    abrirModal("Diversos");
 
 }
     }
