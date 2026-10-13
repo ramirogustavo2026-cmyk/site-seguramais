@@ -485,7 +485,8 @@ function abrirModal(servico = "Auto") {
         "Auto",
         "Moto",
         "Caminhão",
-        "Vida"
+        "Vida",
+        "Residencial"
     ];
 
 
@@ -551,6 +552,12 @@ function abrirModal(servico = "Auto") {
         );
 
 
+    const fluxoResidencial =
+        document.getElementById(
+            "fluxo-residencial"
+        );
+
+
     if (fluxoAuto) {
         fluxoAuto.style.display = "none";
     }
@@ -568,6 +575,11 @@ function abrirModal(servico = "Auto") {
 
     if (fluxoVida) {
         fluxoVida.style.display = "none";
+    }
+
+
+    if (fluxoResidencial) {
+        fluxoResidencial.style.display = "none";
     }
 
 
@@ -669,6 +681,32 @@ function abrirModal(servico = "Auto") {
 
         if (fluxoVida) {
             fluxoVida.style.display =
+                "block";
+        }
+
+    }
+
+
+    /* =====================================================
+       SEGURO RESIDENCIAL
+    ====================================================== */
+
+    if (servico === "Residencial") {
+
+        if (headerText) {
+            headerText.textContent =
+                "SEGURO RESIDENCIAL";
+        }
+
+
+        if (headerIcon) {
+            headerIcon.innerHTML =
+                '<i data-lucide="house"></i>';
+        }
+
+
+        if (fluxoResidencial) {
+            fluxoResidencial.style.display =
                 "block";
         }
 
@@ -843,6 +881,11 @@ function mostrarEtapaCotacaoAuto() {
 
         if (tipoSeguroAtual === "Vida") {
             sufixo = "vida";
+        }
+
+
+        if (tipoSeguroAtual === "Residencial") {
+            sufixo = "residencial";
         }
 
 
@@ -1685,6 +1728,108 @@ function verificarAnoCaminhao(ano) {
                 ? "block"
                 : "none";
 
+    }
+
+}
+
+
+/* =========================================================
+   CONDICIONAIS - SEGURO RESIDENCIAL
+========================================================= */
+
+function verificarTipoImovelResidencial(valor) {
+
+    const garagem =
+        document.getElementById(
+            "cond-p1-garagem"
+        );
+
+    const portaria =
+        document.getElementById(
+            "cond-p1-portaria"
+        );
+
+    const outroImovel =
+        document.getElementById(
+            "cond-p1-outro-imovel"
+        );
+
+
+    if (garagem) {
+        garagem.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+    }
+
+
+    if (portaria) {
+        portaria.style.display =
+            valor === "2"
+                ? "block"
+                : "none";
+    }
+
+
+    if (outroImovel) {
+        outroImovel.style.display =
+            valor === "3"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarPosseImovelResidencial(valor) {
+
+    const alugado =
+        document.getElementById(
+            "cond-p2-alugado"
+        );
+
+
+    if (alugado) {
+        alugado.style.display =
+            valor === "2"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarCoberturasResidencial(valor) {
+
+    const adicionais =
+        document.getElementById(
+            "cond-p3-adicionais"
+        );
+
+
+    if (adicionais) {
+        adicionais.style.display =
+            valor === "4"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarBemAltoValorResidencial(valor) {
+
+    const bemValor =
+        document.getElementById(
+            "cond-p4-bem-valor"
+        );
+
+
+    if (bemValor) {
+        bemValor.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
     }
 
 }
@@ -3057,6 +3202,17 @@ function enviarFormulario() {
     }
 
 
+    if (tipoSeguroAtual === "Residencial") {
+
+        tipoSeguro = "RESIDENCIAL";
+        sufixoFluxo = "residencial";
+
+        chaveUltimoEnvio =
+            "ultimoEnvioCotacaoResidencial";
+
+    }
+
+
     /* =====================================================
        LIMITE ENTRE ENVIOS
     ====================================================== */
@@ -3950,6 +4106,31 @@ document.addEventListener(
         }
 
 
+        /* VALOR DE BEM - SEGURO RESIDENCIAL */
+
+        const valorBemResidencialInput =
+            document.getElementById(
+                "valor-bem"
+            );
+
+
+        if (valorBemResidencialInput) {
+
+            valorBemResidencialInput.addEventListener(
+                "input",
+                () => {
+
+                    valorBemResidencialInput.value =
+                        mascaraMoeda(
+                            valorBemResidencialInput.value
+                        );
+
+                }
+            );
+
+        }
+
+
         carregarProfissoes();
         carregarMarcasFIPE();
 
@@ -4009,6 +4190,18 @@ if (
 ) {
 
     abrirModal("Vida");
+
+}
+
+
+if (
+    abrirCotacao === "residencial" &&
+    document.getElementById(
+        "modal-overlay"
+    )
+) {
+
+    abrirModal("Residencial");
 
 }
     }
