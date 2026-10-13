@@ -5936,17 +5936,21 @@ body {
    HERO
 ========================================================= */
 
+/* =========================================================
+   HERO - SEGURO AUTO
+========================================================= */
+
 .seguro-auto-hero {
     position: relative;
 
-    min-height: 460px;
+    min-height: 500px;
 
     display: flex;
     align-items: center;
 
     overflow: hidden;
 
-    background-color: #ffffff;
+    background-color: #061e49;
 }
 
 
@@ -5955,10 +5959,9 @@ body {
 .seguro-auto-hero-imagem {
     position: absolute;
 
-    top: 0;
-    right: 0;
+    inset: 0;
 
-    width: 62%;
+    width: 100%;
     height: 100%;
 
     background-image:
@@ -5984,13 +5987,12 @@ body {
     background:
         linear-gradient(
             90deg,
-            #ffffff 0%,
-            #ffffff 36%,
-            rgba(255, 255, 255, 0.97) 43%,
-            rgba(255, 255, 255, 0.82) 50%,
-            rgba(255, 255, 255, 0.42) 60%,
-            rgba(255, 255, 255, 0.10) 72%,
-            rgba(255, 255, 255, 0) 82%
+            rgba(4, 24, 58, 0.96) 0%,
+            rgba(4, 24, 58, 0.90) 28%,
+            rgba(4, 24, 58, 0.72) 45%,
+            rgba(4, 24, 58, 0.34) 66%,
+            rgba(4, 24, 58, 0.08) 85%,
+            rgba(4, 24, 58, 0) 100%
         );
 
     z-index: 1;
@@ -6006,7 +6008,7 @@ body {
 
     z-index: 2;
 
-    min-height: 460px;
+    min-height: 500px;
 
     display: flex;
     align-items: center;
@@ -6016,40 +6018,67 @@ body {
 /* CONTEÚDO */
 
 .seguro-auto-hero-conteudo {
-    width: 53%;
+    width: 52%;
 
-    padding: 45px 0;
+    padding: 52px 0;
 }
 
 
-.seguro-auto-hero h1 {
-    max-width: 650px;
+/* ETIQUETA */
 
-    color: #071f55;
-
-    font-size: clamp(44px, 5vw, 62px);
-
-    line-height: 1.02;
-
-    letter-spacing: -2px;
+.seguro-auto-hero .seguro-auto-etiqueta {
+    color: #d5e5f8;
 }
 
 
-.seguro-auto-hero h1 strong {
-    color: #1677ff;
+.seguro-auto-hero .seguro-auto-etiqueta > span {
+    background-color: #258cff;
 }
 
 
-.seguro-auto-hero p {
-    max-width: 530px;
+/* TÍTULO */
+
+.seguro-auto-hero h1,
+.seguro-auto-hero-titulo {
+    max-width: 640px;
+
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(43px, 5vw, 61px);
+
+    line-height: 1.04;
+
+    letter-spacing: -1.8px;
+
+    font-weight: 700;
+}
+
+
+.seguro-auto-hero h1 strong,
+.seguro-auto-hero-titulo .destaque {
+    color: #4ca1ff;
+
+    font-weight: 700;
+}
+
+
+/* TEXTO */
+
+.seguro-auto-hero p,
+.seguro-auto-hero-texto {
+    max-width: 520px;
 
     margin-top: 18px;
 
-    color: #365d8d;
+    color: #e1ebf7;
 
     font-size: 17px;
 
     line-height: 1.55;
+
+    font-weight: 400;
 }
 
 
@@ -6115,23 +6144,23 @@ body {
 .seguro-auto-btn-whatsapp {
     background-color: transparent;
 
-    color: #071f55;
+    color: #ffffff;
 
-    border: 1.5px solid #071f55;
+    border: 1.5px solid rgba(255, 255, 255, 0.90);
 }
 
 
 .seguro-auto-btn-whatsapp i {
-    color: #071f55;
+    color: #ffffff;
 
     font-size: 15px;
 }
 
 
 .seguro-auto-btn-whatsapp:hover {
-    background-color: #071f55;
+    background-color: rgba(255, 255, 255, 0.12);
 
-    border-color: #071f55;
+    border-color: #ffffff;
 
     color: #ffffff;
 
@@ -6155,7 +6184,7 @@ body {
     display: flex;
     align-items: center;
 
-    border-top: 1px solid #dbe8f5;
+    border-top: 1px solid rgba(255, 255, 255, 0.20);
 }
 
 
@@ -6169,7 +6198,7 @@ body {
 
     gap: 10px;
 
-    border-right: 1px solid #dbe8f5;
+    border-right: 1px solid rgba(255, 255, 255, 0.20);
 }
 
 
@@ -6184,14 +6213,14 @@ body {
 
 
 .seguro-auto-hero-beneficios i {
-    color: #1677ff;
+    color: #57a8ff;
 
     font-size: 22px;
 }
 
 
 .seguro-auto-hero-beneficios span {
-    color: #5276a4;
+    color: #cedef1;
 
     font-size: 11px;
 
@@ -6200,7 +6229,7 @@ body {
 
 
 .seguro-auto-hero-beneficios strong {
-    color: #071f55;
+    color: #ffffff;
 
     font-size: 12px;
 }
@@ -7047,15 +7076,11 @@ body {
 
 @media (max-width: 950px) {
 
-    .seguro-auto-hero-imagem {
-        width: 70%;
-    }
-
-
     .seguro-auto-hero-conteudo {
         width: 62%;
     }
-.seguro-auto-cotacao-box {
+
+    .seguro-auto-cotacao-box {
         grid-template-columns: 1fr;
     }
 
@@ -7081,21 +7106,21 @@ body {
 @media (max-width: 750px) {
 
     .seguro-auto-hero {
-        min-height: 500px;
+        min-height: 520px;
     }
 
 
     .seguro-auto-hero-container {
-        min-height: 500px;
+        min-height: 520px;
     }
 
 
     .seguro-auto-hero-imagem {
         width: 100%;
 
-        opacity: 0.70;
+        opacity: 1;
 
-        background-position: 70% center;
+        background-position: 68% center;
     }
 
 
@@ -7103,9 +7128,9 @@ body {
         background:
             linear-gradient(
                 90deg,
-                rgba(255, 255, 255, 0.94) 0%,
-                rgba(255, 255, 255, 0.84) 55%,
-                rgba(255, 255, 255, 0.38) 100%
+                rgba(4, 24, 58, 0.94) 0%,
+                rgba(4, 24, 58, 0.82) 55%,
+                rgba(4, 24, 58, 0.35) 100%
             );
     }
 
@@ -7150,21 +7175,21 @@ body {
 @media (max-width: 560px) {
 
     .seguro-auto-hero {
-        min-height: 570px;
+        min-height: 650px;
     }
 
 
     .seguro-auto-hero-container {
-        min-height: 570px;
+        min-height: 650px;
     }
 
 
     .seguro-auto-hero-imagem {
         width: 100%;
 
-        opacity: 0.60;
+        opacity: 1;
 
-        background-position: 72% center;
+        background-position: 66% center;
     }
 
 
@@ -7172,9 +7197,9 @@ body {
         background:
             linear-gradient(
                 90deg,
-                rgba(255, 255, 255, 0.93) 0%,
-                rgba(255, 255, 255, 0.79) 65%,
-                rgba(255, 255, 255, 0.40) 100%
+                rgba(4, 24, 58, 0.94) 0%,
+                rgba(4, 24, 58, 0.82) 72%,
+                rgba(4, 24, 58, 0.48) 100%
             );
     }
 
@@ -7186,17 +7211,19 @@ body {
     }
 
 
-    .seguro-auto-hero h1 {
-        max-width: 340px;
+    .seguro-auto-hero h1,
+    .seguro-auto-hero-titulo {
+        max-width: 355px;
 
-        font-size: 39px;
+        font-size: 38px;
 
         letter-spacing: -1px;
     }
 
 
-    .seguro-auto-hero p {
-        max-width: 330px;
+    .seguro-auto-hero p,
+    .seguro-auto-hero-texto {
+        max-width: 345px;
 
         font-size: 15px;
     }
