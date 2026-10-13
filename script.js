@@ -484,7 +484,8 @@ function abrirModal(servico = "Auto") {
     const servicosPermitidos = [
         "Auto",
         "Moto",
-        "Caminhão"
+        "Caminhão",
+        "Vida"
     ];
 
 
@@ -544,6 +545,12 @@ function abrirModal(servico = "Auto") {
         );
 
 
+    const fluxoVida =
+        document.getElementById(
+            "fluxo-vida"
+        );
+
+
     if (fluxoAuto) {
         fluxoAuto.style.display = "none";
     }
@@ -556,6 +563,11 @@ function abrirModal(servico = "Auto") {
 
     if (fluxoCaminhao) {
         fluxoCaminhao.style.display = "none";
+    }
+
+
+    if (fluxoVida) {
+        fluxoVida.style.display = "none";
     }
 
 
@@ -631,6 +643,32 @@ function abrirModal(servico = "Auto") {
 
         if (fluxoCaminhao) {
             fluxoCaminhao.style.display =
+                "block";
+        }
+
+    }
+
+
+    /* =====================================================
+       SEGURO VIDA
+    ====================================================== */
+
+    if (servico === "Vida") {
+
+        if (headerText) {
+            headerText.textContent =
+                "SEGURO DE VIDA";
+        }
+
+
+        if (headerIcon) {
+            headerIcon.innerHTML =
+                '<i data-lucide="heart-handshake"></i>';
+        }
+
+
+        if (fluxoVida) {
+            fluxoVida.style.display =
                 "block";
         }
 
@@ -800,6 +838,11 @@ function mostrarEtapaCotacaoAuto() {
 
         if (tipoSeguroAtual === "Caminhão") {
             sufixo = "caminhao";
+        }
+
+
+        if (tipoSeguroAtual === "Vida") {
+            sufixo = "vida";
         }
 
 
@@ -1678,6 +1721,268 @@ function mascaraMoeda(valor) {
 
 
 /* =========================================================
+   CONDICIONAIS - SEGURO DE VIDA
+========================================================= */
+
+function verificarObjetivoVida(valor) {
+
+    const familia =
+        document.getElementById(
+            "cond-p1-beneficiario-fam"
+        );
+
+    const pessoal =
+        document.getElementById(
+            "cond-p1-sit-pessoal"
+        );
+
+    const financiamento =
+        document.getElementById(
+            "cond-p1-tipo-fin"
+        );
+
+    const outro =
+        document.getElementById(
+            "cond-p1-especificar-outro"
+        );
+
+
+    if (familia) {
+        familia.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+    }
+
+
+    if (pessoal) {
+        pessoal.style.display =
+            valor === "2"
+                ? "block"
+                : "none";
+    }
+
+
+    if (financiamento) {
+        financiamento.style.display =
+            valor === "3"
+                ? "block"
+                : "none";
+    }
+
+
+    if (outro) {
+        outro.style.display =
+            valor === "4"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarFaixaEtariaVida(valor) {
+
+    const adicionais =
+        document.getElementById(
+            "cond-p2-adicionais-41"
+        );
+
+    const analise =
+        document.getElementById(
+            "cond-p2-alerta-analise"
+        );
+
+
+    if (adicionais) {
+        adicionais.style.display =
+            valor === "3"
+                ? "block"
+                : "none";
+    }
+
+
+    if (analise) {
+        analise.style.display =
+            valor === "4"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarDependentesVida(valor) {
+
+    const quantidade =
+        document.getElementById(
+            "cond-p3-qtd-dep"
+        );
+
+    const protecaoPessoal =
+        document.getElementById(
+            "cond-p3-protecao-pessoal"
+        );
+
+
+    if (quantidade) {
+        quantidade.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+    }
+
+
+    if (protecaoPessoal) {
+        protecaoPessoal.style.display =
+            valor === "2"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarMorteVida(valor) {
+
+    const campo =
+        document.getElementById(
+            "cond-p4-valor-morte"
+        );
+
+
+    if (campo) {
+        campo.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarInvalidezVida(valor) {
+
+    const campo =
+        document.getElementById(
+            "cond-p5-tipo-invalidez"
+        );
+
+
+    if (campo) {
+        campo.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarDoencasVida(valor) {
+
+    const campo =
+        document.getElementById(
+            "cond-p6-tipos-doencas"
+        );
+
+
+    if (campo) {
+        campo.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarEsportesVida(valor) {
+
+    const campo =
+        document.getElementById(
+            "cond-p7-detalhe-esporte"
+        );
+
+
+    if (campo) {
+        campo.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarBeneficiariosVida(valor) {
+
+    const quantidade =
+        document.getElementById(
+            "cond-p8-num-benef"
+        );
+
+    const mensagem =
+        document.getElementById(
+            "cond-p8-msg-posterior"
+        );
+
+
+    if (quantidade) {
+        quantidade.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+    }
+
+
+    if (mensagem) {
+        mensagem.style.display =
+            valor === "3"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarValorCoberturaVida(valor) {
+
+    const campo =
+        document.getElementById(
+            "cond-p9-outro-valor"
+        );
+
+
+    if (campo) {
+        campo.style.display =
+            valor === "outro"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+function verificarAdicionaisVida(valor) {
+
+    const campo =
+        document.getElementById(
+            "cond-p10-quais-adicionais"
+        );
+
+
+    if (campo) {
+        campo.style.display =
+            valor === "1"
+                ? "block"
+                : "none";
+    }
+
+}
+
+
+/* =========================================================
    VALIDAÇÃO DO FORMULÁRIO - SEGURO AUTO
 ========================================================= */
 
@@ -1819,6 +2124,11 @@ function validarEtapaCotacaoAuto() {
 
         if (tipoSeguroAtual === "Caminhão") {
             sufixo = "caminhao";
+        }
+
+
+        if (tipoSeguroAtual === "Vida") {
+            sufixo = "vida";
         }
 
 
@@ -2736,6 +3046,17 @@ function enviarFormulario() {
     }
 
 
+    if (tipoSeguroAtual === "Vida") {
+
+        tipoSeguro = "VIDA";
+        sufixoFluxo = "vida";
+
+        chaveUltimoEnvio =
+            "ultimoEnvioCotacaoVida";
+
+    }
+
+
     /* =====================================================
        LIMITE ENTRE ENVIOS
     ====================================================== */
@@ -3581,6 +3902,54 @@ document.addEventListener(
         }
 
 
+        /* VALORES - SEGURO DE VIDA */
+
+        const valorMorteInput =
+            document.getElementById(
+                "p4-capital-morte"
+            );
+
+
+        if (valorMorteInput) {
+
+            valorMorteInput.addEventListener(
+                "input",
+                () => {
+
+                    valorMorteInput.value =
+                        mascaraMoeda(
+                            valorMorteInput.value
+                        );
+
+                }
+            );
+
+        }
+
+
+        const valorVidaInput =
+            document.getElementById(
+                "p9-especificar-valor"
+            );
+
+
+        if (valorVidaInput) {
+
+            valorVidaInput.addEventListener(
+                "input",
+                () => {
+
+                    valorVidaInput.value =
+                        mascaraMoeda(
+                            valorVidaInput.value
+                        );
+
+                }
+            );
+
+        }
+
+
         carregarProfissoes();
         carregarMarcasFIPE();
 
@@ -3630,6 +3999,18 @@ if (
     abrirModal("Caminhão");
 
 }
+
+
+if (
+    abrirCotacao === "vida" &&
+    document.getElementById(
+        "modal-overlay"
+    )
+) {
+
+    abrirModal("Vida");
+
+}
     }
-    
+
 );
