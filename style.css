@@ -16998,3 +16998,736 @@ label:has(input[type="checkbox"]) {
     }
 
 }
+
+/* =========================================================
+   PÁGINAS LEGAIS
+   Termos de Uso / Política de Privacidade
+========================================================= */
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.pagina-legal-hero {
+    position: relative;
+
+    padding: 90px 0 75px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #041b46 0%,
+            #073b83 60%,
+            #0b5ec8 100%
+        );
+}
+
+
+.pagina-legal-hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    top: -230px;
+    right: -120px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    pointer-events: none;
+}
+
+
+.pagina-legal-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    bottom: -190px;
+    left: -100px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(38, 139, 255, 0.15);
+
+    pointer-events: none;
+}
+
+
+.pagina-legal-hero-container {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 920px;
+}
+
+
+.pagina-legal-etiqueta {
+    margin-bottom: 15px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: #d7e8fb;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+}
+
+
+.pagina-legal-etiqueta span {
+    width: 40px;
+    height: 3px;
+
+    display: block;
+
+    background-color: #3e9cff;
+}
+
+
+.pagina-legal-hero h1 {
+    max-width: 650px;
+
+    color: #ffffff;
+
+    font-size: clamp(44px, 6vw, 68px);
+
+    line-height: 1.02;
+
+    letter-spacing: -2px;
+}
+
+
+.pagina-legal-hero h1 strong {
+    color: #49a2ff;
+}
+
+
+.pagina-legal-hero p {
+    max-width: 650px;
+
+    margin-top: 18px;
+
+    color: #dce9f7;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   CONTEÚDO GERAL
+========================================================= */
+
+.pagina-legal-conteudo {
+    padding: 65px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f6faff 0%,
+            #ffffff 100%
+        );
+}
+
+
+.pagina-legal-container {
+    max-width: 980px;
+}
+
+
+.pagina-legal-card {
+    padding: 48px 52px;
+
+    background-color: #ffffff;
+
+    border:
+        1px solid #e4edf7;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 35px rgba(14, 62, 120, 0.08);
+}
+
+
+/* =========================================================
+   INTRODUÇÃO
+========================================================= */
+
+.pagina-legal-introducao {
+    margin-bottom: 38px;
+
+    padding-bottom: 30px;
+
+    border-bottom:
+        1px solid #e4edf7;
+}
+
+
+.pagina-legal-introducao p {
+    margin-bottom: 12px;
+
+    color: #425f83;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+
+.pagina-legal-introducao p:last-child {
+    margin-bottom: 0;
+}
+
+
+.pagina-legal-introducao strong {
+    color: #071f55;
+}
+
+
+/* =========================================================
+   SEÇÕES
+========================================================= */
+
+.pagina-legal-secao {
+    margin-top: 34px;
+}
+
+
+.pagina-legal-secao:first-of-type {
+    margin-top: 0;
+}
+
+
+.pagina-legal-secao h2 {
+    position: relative;
+
+    margin-bottom: 14px;
+
+    padding-left: 18px;
+
+    color: #071f55;
+
+    font-size: 22px;
+
+    line-height: 1.3;
+}
+
+
+.pagina-legal-secao h2::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 4px;
+
+    width: 4px;
+    height: 22px;
+
+    border-radius: 10px;
+
+    background-color: #1677ff;
+}
+
+
+.pagina-legal-secao p {
+    margin-bottom: 12px;
+
+    color: #4c688b;
+
+    font-size: 14px;
+
+    line-height: 1.75;
+}
+
+
+.pagina-legal-secao p:last-child {
+    margin-bottom: 0;
+}
+
+
+.pagina-legal-secao strong {
+    color: #173b69;
+}
+
+
+/* =========================================================
+   LISTAS
+========================================================= */
+
+.pagina-legal-secao ul {
+    margin-top: 12px;
+
+    padding-left: 0;
+
+    list-style: none;
+}
+
+
+.pagina-legal-secao li {
+    position: relative;
+
+    margin-bottom: 10px;
+
+    padding-left: 27px;
+
+    color: #4c688b;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+.pagina-legal-secao li::before {
+    content: "✓";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 18px;
+    height: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #e9f4ff;
+
+    color: #1677ff;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   LINK PARA OUTRA PÁGINA LEGAL
+========================================================= */
+
+.pagina-legal-link {
+    margin-top: 10px;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 9px;
+
+    color: #1677ff;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        gap 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.pagina-legal-link:hover {
+    gap: 13px;
+
+    color: #055cc5;
+}
+
+
+/* =========================================================
+   CONTATO
+========================================================= */
+
+.pagina-legal-contato {
+    margin-top: 20px;
+
+    padding: 20px 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f3f8ff 0%,
+            #eaf4ff 100%
+        );
+
+    border:
+        1px solid #dceaf8;
+
+    border-radius: 12px;
+}
+
+
+.pagina-legal-contato p {
+    margin-bottom: 10px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.pagina-legal-contato p:last-child {
+    margin-bottom: 0;
+}
+
+
+.pagina-legal-contato i {
+    width: 18px;
+
+    color: #1677ff;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   DATA DE ATUALIZAÇÃO
+========================================================= */
+
+.pagina-legal-atualizacao {
+    margin-top: 42px;
+
+    padding-top: 24px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    border-top:
+        1px solid #e4edf7;
+
+    color: #7186a2;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.pagina-legal-atualizacao i {
+    color: #1677ff;
+}
+
+
+/* =========================================================
+   CTA FINAL
+========================================================= */
+
+.pagina-legal-cta {
+    padding: 0 0 70px;
+
+    background-color: #ffffff;
+}
+
+
+.pagina-legal-cta-box {
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 180px;
+
+    padding: 36px 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 35px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #05265a 0%,
+            #084b9c 100%
+        );
+
+    box-shadow:
+        0 8px 28px rgba(10, 61, 130, 0.14);
+}
+
+
+.pagina-legal-cta-box::after {
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    right: -130px;
+    bottom: -210px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(30, 133, 255, 0.17);
+
+    pointer-events: none;
+}
+
+
+.pagina-legal-cta-box > div {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+.pagina-legal-cta-etiqueta {
+    margin-bottom: 10px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: #cadff7;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+
+.pagina-legal-cta-etiqueta span {
+    width: 36px;
+    height: 2px;
+
+    display: block;
+
+    background-color: #3c9dff;
+}
+
+
+.pagina-legal-cta h2 {
+    color: #ffffff;
+
+    font-size: clamp(31px, 4vw, 43px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1px;
+}
+
+
+.pagina-legal-cta h2 strong {
+    color: #3c9dff;
+}
+
+
+.pagina-legal-cta p {
+    max-width: 590px;
+
+    margin-top: 9px;
+
+    color: #d6e5f5;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   BOTÃO CTA
+========================================================= */
+
+.pagina-legal-cta-box > a {
+    position: relative;
+
+    z-index: 1;
+
+    flex-shrink: 0;
+
+    min-height: 48px;
+
+    padding: 0 22px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    border-radius: 9px;
+
+    background-color: #ffd400;
+
+    color: #071f55;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.pagina-legal-cta-box > a:hover {
+    background-color: #ffca00;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .pagina-legal-hero {
+        padding:
+            75px 0 65px;
+    }
+
+
+    .pagina-legal-card {
+        padding:
+            40px 35px;
+    }
+
+
+    .pagina-legal-cta-box {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 560px) {
+
+    .pagina-legal-hero {
+        padding:
+            60px 0 52px;
+    }
+
+
+    .pagina-legal-hero h1 {
+        font-size: 42px;
+
+        letter-spacing: -1.2px;
+    }
+
+
+    .pagina-legal-hero p {
+        font-size: 15px;
+    }
+
+
+    .pagina-legal-conteudo {
+        padding:
+            42px 0;
+    }
+
+
+    .pagina-legal-card {
+        padding:
+            28px 20px;
+
+        border-radius: 14px;
+    }
+
+
+    .pagina-legal-introducao {
+        margin-bottom: 30px;
+
+        padding-bottom: 24px;
+    }
+
+
+    .pagina-legal-introducao p {
+        font-size: 14px;
+    }
+
+
+    .pagina-legal-secao {
+        margin-top: 30px;
+    }
+
+
+    .pagina-legal-secao h2 {
+        font-size: 19px;
+    }
+
+
+    .pagina-legal-secao p,
+    .pagina-legal-secao li {
+        font-size: 13px;
+    }
+
+
+    .pagina-legal-contato {
+        padding:
+            18px 16px;
+    }
+
+
+    .pagina-legal-contato p {
+        align-items: flex-start;
+    }
+
+
+    .pagina-legal-atualizacao {
+        margin-top: 34px;
+    }
+
+
+    .pagina-legal-cta {
+        padding-bottom: 50px;
+    }
+
+
+    .pagina-legal-cta-box {
+        padding:
+            30px 22px;
+    }
+
+
+    .pagina-legal-cta h2 {
+        font-size: 32px;
+    }
+
+
+    .pagina-legal-cta-box > a {
+        width: 100%;
+    }
+
+}
